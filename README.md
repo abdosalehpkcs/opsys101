@@ -21,7 +21,7 @@ SSH keys are widely supported and work with almost any system that uses SSH, inc
 
 ## 🔑 How to Generate SSH Keys
 
-### 🍺 Linux/MacOS
+### Linux/MacOS 🍺
 
 **ED25519 (Recommended):**
 ```bash
