@@ -14,11 +14,21 @@ The **filesystem** manages files and directories (or folders). Each is identifie
 
 To find out where you are in the filesystem, run the command `pwd` (short for "**p**rint **w**orking **d**irectory"). This prints the absolute path of your **current working directory**, which is where the shell runs commands and looks for files by default.
 
+### Verifying Your Location
 
+After navigating to your home directory, verify your location:
+
+```bash
+pwd
+```
+
+You should see output like:
+- `/home/your_username` (for regular users)
+- `/root` (for root user)
 
 # Linux Navigation and Home Directory Guide
 
-## 🏠 What is the Home Directory?
+## What is the Home Directory?
 
 The **home directory** is your personal workspace in the Linux filesystem. It's where your personal files, configurations, and user-specific data are stored. Think of it as your "user folder" - similar to "My Documents" in Windows, but much more central to the Linux experience.
 
@@ -29,7 +39,7 @@ The **home directory** is your personal workspace in the Linux filesystem. It's 
 - Usually located at `/home/username` (where `username` is your login name)
 - For root user, it's typically `/root`
 
-## 🧭 Ways to Navigate to Home Directory
+## Ways to Navigate to Home Directory
 
 There are several methods to get to your home directory from anywhere in the filesystem:
 
@@ -65,19 +75,8 @@ cd ~username
 ```
 This takes you to a specific user's home directory (useful when you have permissions).
 
-## 🔍 Verifying Your Location
 
-After navigating to your home directory, verify your location:
-
-```bash
-pwd
-```
-
-You should see output like:
-- `/home/your_username` (for regular users)
-- `/root` (for root user)
-
-## 📂 Exploring Home Directory Contents
+## Exploring Home Directory Contents
 
 Once in your home directory, explore what's there:
 
@@ -93,7 +92,7 @@ ls -l
 ```
 
 **Common contents you might find:**
-- **Documents**, **Downloads**, **Pictures** - Standard user folders
+- **. and ..** are special directories (current and parent)
 - **.bashrc** - Bash shell configuration
 - **.profile** - User environment settings
 - **.ssh/** - SSH keys and configuration
@@ -105,7 +104,7 @@ ls -l
 # Go home from anywhere
 cd
 
-# Go to previous directory
+# Go to previous directory and print its path
 cd -
 
 # Go up one level, then home
@@ -131,9 +130,9 @@ The home directory is your starting point and safe harbor in the Linux filesyste
 
 
 
-## How Can I Identify Files and Directories?
+## A bit more about Files and Directories?
 
-`pwd` tells you where you are. To find out what's there, type `ls` (which is short for "**l**i**s**ting") and press the enter key. On its own, `ls` lists the contents of your current directory (the one displayed by `pwd`). If you add the names of some files, `ls` will list them, and if you add the names of directories, it will list their contents.
+As said before `pwd` tells you where you are. To find out what's there, type `ls` (which is short for "**l**i**s**ting") and press the enter key. On its own, `ls` lists the contents of your current directory (the one displayed by `pwd`). If you add the names of some files, `ls` will list them, and if you add the names of directories, it will list their contents.
 
 ### Command Structure: Commands, Options, and Arguments
 
@@ -275,7 +274,7 @@ file filename
 
 Understanding these file type indicators helps you navigate the filesystem more effectively and understand what you're working with at a glance.
 
-## 🔐 Linux Permissions and Ownership
+## Linux Permissions and Ownership
 
 ### Understanding the Permission System
 
