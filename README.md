@@ -105,3 +105,23 @@ sudo systemctl restart sshd
 ```
 
 
+# Lab Assignment: SSH Key Setup and User Management
+
+**Step 1: Find Your Group**
+Students sharing the same port number form a group. Identify your group members and the assigned port or from the mailing list.
+
+**Step 2: Initial Root Access**
+Try to log in to your root user on the assigned virtual machine. Once successful, **STOP** - do not proceed further yet, wait for your classmates in your group to reach this point.
+
+**Step 3: Designate Group Administrator**
+Collaborate with your group to select one person who will act as the root administrator. This person will be responsible for helping and managing the setup process for the entire group.
+
+**Step 4: User Account Creation**
+From the root account, each group member should create his/her/their individual user account and 
+remember THE PASSWORD, then Add the user to sudo group.
+
+**Step 5: Verify User Login And sudo command access**
+Each student should then attempt to log in using their newly created personal account.
+
+**Step 6: Adminstrator Only**
+The designated administrator should change the root password and disable SSH access.
