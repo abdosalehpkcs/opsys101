@@ -44,11 +44,11 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/key_name -C "note-$(date +%Y%m%d)" -N "your 
 - **ED25519**: Modern, faster, and more secure algorithm. Recommended for new keys.
 - **RSA**: Widely compatible with older systems, battle-tested and reliable.
 
-These commands create highly secure keys with 4096-bit encryption and automatically add a date-based comment for identification. The **passphrase** adds an extra layer of security - even if someone gets your private key file, they can't use it without knowing this phrase.
+These commands create highly secure keys with 4096-bit encryption and automatically add a date-based comment for identification. The **passphrase** adds an extra layer of security, even if someone gets your private key file, they can't use it without knowing this phrase.
 
 ### Windows 🪟 🤮
 
-> **Note:** On Windows (with OpenSSH or Git Bash) → they also go under C:\Users\<YourName>\.ssh\
+> **Note:** On Windows (with OpenSSH or Git Bash) → they also go under C:\Users\YourName\.ssh\
 
 Windows offers several approaches for SSH key generation, each with its own advantages:
 - **Git Bash (Recommended for simplicity):**
@@ -87,7 +87,7 @@ In this file, you can disable direct root login via SSH. This forces users to lo
 
 **Edit the SSH configuration file:**
 ```bash
-sudo nano /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 
 **Find and modify this line:**
