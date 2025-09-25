@@ -128,33 +128,6 @@ echo $PWD
 
 The home directory is your starting point and safe harbor in the Linux filesystem - master these navigation methods and you'll always find your way back!
 
-
-
-## A bit more about Files and Directories?
-
-As said before `pwd` tells you where you are. To find out what's there, type `ls` (which is short for "**l**i**s**ting") and press the enter key. On its own, `ls` lists the contents of your current directory (the one displayed by `pwd`). If you add the names of some files, `ls` will list them, and if you add the names of directories, it will list their contents.
-
-### Command Structure: Commands, Options, and Arguments
-
-Understanding Linux commands follows a simple pattern: **command + options + arguments**
-
-```bash
-# Basic command
-ls
-
-# Command with options (switches)
-ls -l -a
-
-# Combined options (shorthand)
-ls -la
-
-# Command with arguments (directories to list)
-ls /public /public/ucebnove
-
-# Command with options and arguments
-ls -latr /public
-```
-
 ### Practical Example
 
 Let's explore different ways to use the `ls` command with real examples:
@@ -698,5 +671,4 @@ ln -s /path/to/target linkname  # Create symlink
 # Check file types
 ls -l                          # See file type indicators
 file filename                  # Detailed file information
-```
-
+``
