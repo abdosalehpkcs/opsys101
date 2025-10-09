@@ -179,7 +179,7 @@ When you do this, you'll see:
 
 ```bash
 # Start a long-running process in background
-python3 data_processing.py &
+sleep 10000 &
 
 # Continue working while it runs
 ls
