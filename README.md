@@ -778,10 +778,6 @@ $ time find /public -type f -exec basename {} \;
 # GOOD APPROACH - Using + with -printf
 $ time find /public -type f -printf '%f\n'
 # Result: ~30 seconds (no external processes!)
-
-# ALTERNATIVE - Using + 
-$ time find /public -type f -exec basename {} +
-# Result: ~2-3 minutes (only a few hundred processes)
 ```
 
 ##### Best Practices: Avoiding `-exec` When Possible
