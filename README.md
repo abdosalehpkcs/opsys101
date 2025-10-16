@@ -752,10 +752,6 @@ With + (batch processing):
 - The command doesn't support multiple arguments
 - You need different behavior for each file
 
-```bash
-# Example: Move each file to a different directory based on its name
-$ find /public -name "*.txt" -exec mv {} /backup/{} \;
-```
 
 ##### Use `+` when:
 - The command can handle multiple files
