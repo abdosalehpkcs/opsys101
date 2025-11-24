@@ -148,9 +148,7 @@ cp ~/list.txt ~/list.bkp
 
 Always keep a backup before applying any sed command that modifies content.
 
-```bash
-Draha Zuzka. Zuzka, ty si najlepsia zena na svete. Zuzka, ja Ta milujem. Zuzka je najkrajsie stvorenie na svete. Kazdy by chcel byt ako ty, Zuzka. Jaj Zuzka, Zuzka, krasna si ako ruzicka. O Zuzka, Zuzka, Zuzka, preco si len Zuzka. Mozno mi tvojich ust sa odrieknut, mozno mi ruku nedostat, mozno mi v dialky zialne utieknut, mozno mi nemilym ostat, mozno mi ustam smadom umierat, mozno mi zialit v samote, mozno mi zivot v pustach zavierat, mozno mi nezit v zivote, mozno mi seba sameho zhubit: nemozno mi ta nelubit! Tvoja Laska.
-```
+![alt text](image.png)
 
 This is a letter that Jozko Mrkvicka once wrote to his girlfriend Zuzka Blazkova. But then Jozko and Zuzka broke up, and now this absolute genius decided to have a new girlfriend and figured the best way to handle it was to just recycle the same love letter. Because apparently, why write something new when you can just do a find-and-replace on the old one? Help him (yes, despite the obvious moral red flags here) rewriting the letter according to the following tasks:
 
