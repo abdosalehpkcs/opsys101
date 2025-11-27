@@ -63,8 +63,8 @@ This provides basic synchronization for background work.
 
 ## Runtime Identifiers
 
-- `$$`: PID of the current shell  
-- `$!`: PID of the most recent background job  
+- `$$`: PID of the current shell.  
+- `$!`: PID of the most recent the most recent background process.
 
 ## Job-Control Tools
 
