@@ -351,7 +351,7 @@ Summary:
 ### 8. [Homework] Modify `losovac.sh` to store its PID in `/tmp/losovac.PID`
 ### 9. [Homework] Modify `vyberac.sh` to read the PID of `losovac.sh` from `/tmp/losovac.PID`
 ### 10. [Homework] Modify `losovac.sh` to create a named pipe `/tmp/losovac.PID`
-S### Bonus
+### Bonus
 Ensure the exchange of at least five different signals between two processes.
 For each exchanged signal, print what is happening from the perspective of the processes.
 After that, print one user-defined message taken as the next argument from the script’s argument list.
