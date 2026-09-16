@@ -4,6 +4,17 @@
 
 Have you ever wondered if there’s another way to access your GitHub repo? Or what other authentication methods are out there? Maybe you’ve felt frustrated when a system refuses to recognize you, asking those so-called credentials before letting you in. If you already know the answer, this guide isn’t for you. But if not, carry on, good student! 
 
+> **Student machines (2025/26 setup):** Each student now has their **own virtual machine**. On your **first login you will be asked to set a new password** — once you do, the session **disconnects**, so you simply **reconnect**. Students **no longer have `sudo`**, so the user-management and root-hardening steps in this guide are **optional**.
+
+## Table of Contents
+
+- [What Are SSH Keys?](#what-are-ssh-keys)
+- [🔑 How to Generate SSH Keys](#-how-to-generate-ssh-keys)
+- [How to Login using SSH](#how-to-login-using-ssh)
+- [Configuring SSH for Key Authentication](#configuring-ssh-for-key-authentication)
+- [SSH Config Setup Guide (Optional)](#ssh-config-setup-guide-optional)
+- [Optional: User Management and Root Access](#optional-user-management-and-root-access)
+
 ## What Are SSH Keys?
 
 **Secure Shell (SSH)** is a cryptographic network protocol used for securely operating network services over an unsecured network. it relies on public-key cryptography (see diagram below).. 
@@ -18,6 +29,8 @@ The public key cannot be used to figure out your private key because it’s gene
 ![One Way Math Function](image-1.png)
 
 SSH keys are widely supported and work with almost any system that uses SSH, including Linux servers, cloud platforms, and code hosting services like GitHub and GitLab.
+
+[⬆ Back to top](#table-of-contents)
 
 ## 🔑 How to Generate SSH Keys
 
@@ -62,6 +75,7 @@ Users who favor graphical interfaces can utilize PuTTYgen, which provides point-
 
 ![alt text](image-2.png)
 
+[⬆ Back to top](#table-of-contents)
 
 ## How to Login using SSH
 
@@ -75,39 +89,53 @@ Parameter details:
 - key: Path to your private key file (provided in email)
 
 
-## Configuring SSH for key authentication
+[⬆ Back to top](#table-of-contents)
 
-To edit the SSH server configuration, open the main config file, which is located at: 
+## Configuring SSH for Key Authentication
 
+Key authentication lets you log in with your **private key** instead of a password. For this to work, your **public key** must be stored on the server, inside the target user's `~/.ssh/authorized_keys` file.
+
+**Option A — Copy your public key automatically (easiest).** Run this on your **local** machine:
+```bash
+ssh-copy-id -i ~/.ssh/key_name.pub -p <port> <user>@hiveos.fiit.stuba.sk
+```
+
+**Option B — Add the public key manually.** On the **server**, as the target user:
+```bash
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+echo "ssh-ed25519 AAAA... your-public-key" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+**Test key-based login** from your local machine:
+```bash
+ssh -i ~/.ssh/key_name -p <port> <user>@hiveos.fiit.stuba.sk
+```
+
+Once key login works, you can optionally **turn off password login** to enforce key-only access. On the server, open the SSH server configuration file (you are `root`, so no `sudo` is needed):
 ```bash
 vim /etc/ssh/sshd_config
 ```
 
-In this file, you can disable direct root login via SSH. This forces users to log in with their personal accounts and use sudo for administrative tasks.
-
-**Edit the SSH configuration file:**
+Set these options:
 ```bash
-sudo vim /etc/ssh/sshd_config
+PasswordAuthentication no
+PubkeyAuthentication yes
 ```
 
-**Find and modify this line:**
+Apply the changes by restarting the SSH service:
 ```bash
-# Change this line from:
-#PermitRootLogin yes
-
-# To:
-PermitRootLogin no
+service ssh restart
 ```
 
-**Restart the SSH service to apply changes:**
-```bash
-sudo service ssh restart
-```
+> **Careful:** Confirm that key login already works **before** you disable passwords, otherwise you may lock yourself out.
 
+[⬆ Back to top](#table-of-contents)
 
-# SSH Config Setup Guide - Optional
+## SSH Config Setup Guide (Optional)
 
-## Template
+### Template
 
 ```
 Host <alias>
@@ -117,7 +145,7 @@ Host <alias>
     IdentityFile <path-to-private-key>
 ```
 
-## Configuration Fields
+### Configuration Fields
 
 - **Host**: An alias/shortcut name you choose for easy connection
 - **HostName**: The actual server address (domain or IP)
@@ -127,9 +155,9 @@ Host <alias>
 
 ---
 
-## Setup Instructions
+### Setup Instructions
 
-### Linux/macOS
+#### Linux/macOS
 
 1. **Open your SSH config file:**
    ```bash
@@ -157,7 +185,7 @@ Host <alias>
    ssh sujohn
    ```
 
-### Windows
+#### Windows
 
 1. **Create the .ssh directory (if it doesn't exist):**
    ```powershell
@@ -185,9 +213,9 @@ Host <alias>
 
 ---
 
-## Additional Examples
+### Additional Examples
 
-### Example 1: Multiple servers with different keys
+#### Example 1: Multiple servers with different keys
 ```
 Host webserver
     HostName web.example.com
@@ -201,7 +229,7 @@ Host database
     IdentityFile ~/.ssh/db_key
 ```
 
-### Example 2: Using jump host/bastion
+#### Example 2: Using jump host/bastion
 ```
 Host production
     HostName 10.0.1.100
@@ -215,7 +243,7 @@ Host bastion
     IdentityFile ~/.ssh/bastion_key
 ```
 
-### Example 3: GitHub configuration
+#### Example 3: GitHub configuration
 ```
 Host github.com
     HostName github.com
@@ -225,7 +253,7 @@ Host github.com
 
 ---
 
-## Best Practices
+### Best Practices
 
 ✅ **DO:**
 - Use descriptive Host aliases that are easy to remember
@@ -241,28 +269,62 @@ Host github.com
 - Commit SSH keys to version control
 - Use the same key for everything - Creating Key pairs is for free
 
+[⬆ Back to top](#table-of-contents)
 
+## Optional: User Management and Root Access
 
-# Lab Assignment: SSH Key Setup and User Management
+> **Optional — not required for the course.** These steps show how to create a personal user account, grant it `sudo` rights, and disable direct root login over SSH. All commands are run **as `root`** on the machine.
 
-**Step 1: Find Your Group**
-Students sharing the same port number form a group. Identify your group members and the assigned port or from the mailing list.
+### 1. Create a New User
 
-**Step 2: Initial Root Access**
-Try to log in to your root user on the assigned virtual machine. Once successful, **STOP** - do not proceed further yet, wait for your classmates in your group to reach this point.
+Create a personal account and set its password when prompted:
+```bash
+adduser bob
+```
 
-**Step 3: Designate Group Administrator**
-Collaborate with your group to select one person who will act as the root administrator. This person will be responsible for helping and managing the setup process for the entire group.
+On systems without `adduser`, use the lower-level tool and set the password separately:
+```bash
+useradd -m -s /bin/bash bob
+passwd bob
+```
 
-**Step 4: User Account Creation**
-From the root account, each group member should create his/her/their individual user account and 
-remember THE PASSWORD, then Add the user to sudo group.
+### 2. Grant sudo Permissions
 
-**Step 5: Verify User Login And sudo command access**
-Each student should then attempt to log in using their newly created personal account.
+Add the user to the group that grants administrative rights (`sudo` on Debian/Ubuntu, `wheel` on RHEL/Fedora):
+```bash
+usermod -aG sudo bob
+```
 
-**Step 6: Adminstrator Only**
-The designated administrator should change the root password and disable SSH access.
+Verify the new privileges by switching to the user and running a test command:
+```bash
+su - bob
+sudo whoami   # should print: root
+```
+
+### 3. Disable Root Login over SSH
+
+Once a normal user with `sudo` exists, direct root login over SSH can be turned off so everyone logs in with a personal account. Open the SSH server configuration:
+```bash
+vim /etc/ssh/sshd_config
+```
+
+Change the root-login option:
+```bash
+# From:
+#PermitRootLogin yes
+
+# To:
+PermitRootLogin no
+```
+
+Restart the SSH service to apply the change:
+```bash
+service ssh restart
+```
+
+> **Careful:** Keep an active session open and confirm you can log in as the new `sudo` user **before** you close it, so you do not lock yourself out.
+
+[⬆ Back to top](#table-of-contents)
 
 
 
