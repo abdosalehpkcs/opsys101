@@ -195,12 +195,38 @@ lrwxrwxrwx 1 user user 24 Oct 07 10:30 my-link -> /path/to/original
 
 ### Hard Links
 
-A hard link is another directory entry for exactly the same file data. Removing one name does not remove the data while another hard link still exists.
+A hard link gives **one file two names**. Think of the file's contents as a single sheet of paper with two labels attached: `report.txt` and `report-backup.txt`. Both labels open and edit the same contents; this is not a separate backup copy.
+
+First, create a file and give it a second name:
 
 ```bash
+echo "First version" > report.txt
 ln report.txt report-backup.txt
-ls -li report.txt report-backup.txt # Same inode number means the same file data
 ```
+
+Now either name shows the same contents. A change made through one name is visible through the other:
+
+```bash
+echo "Updated through the backup name" >> report-backup.txt
+cat report.txt
+```
+
+`ls -li` can show that two names refer to the same file: matching numbers in the first column are the file's **inode number**, Linux's internal identifier for that file.
+
+```bash
+ls -li report.txt report-backup.txt
+```
+
+Removing one name removes only that name. The file still exists through the other name:
+
+```bash
+rm report.txt
+cat report-backup.txt
+```
+
+The file data is removed only after you remove its last hard-link name.
+
+> **When to use one:** Hard links are uncommon for everyday work. Use `cp` when you need an independent copy, and use a symbolic link when you want a shortcut to a file or directory. Hard links work only for files on the same filesystem; Linux normally does not allow them for directories.
 
 ### Remove a Link Safely
 
