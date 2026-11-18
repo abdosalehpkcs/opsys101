@@ -293,6 +293,45 @@ The number of programs must be a whole number, and it must be at least 9.015. So
 
 ---
 
+## Problem 3 – How Expensive Is Compaction?
+
+*Topic: multiprogramming with swapping.*
+
+### The problem
+
+Some systems with swapping try to remove external fragmentation with **compaction**. A system has **1 MB** of user memory and does compaction **once every second**. Copying 1 byte takes **0.5 µs**. The average free hole is **0.4 times** as large as the average segment.
+
+- **(a)** What part of the total CPU time is used for compaction?
+- **(b)** How often can the system do compaction if compaction must not use more than **10%** of the CPU time?
+
+*User memory* is the memory for programs, without the operating system.
+
+### Understand the situation
+
+**1. With swapping, memory gets holes.**
+
+Programs of different sizes come into memory and leave again. A used block of memory is a **segment**. When a program leaves, it leaves a free **hole** behind.
+
+A new program may not fit into any hole, although all the holes together are big enough. This is **external fragmentation**.
+
+![A strip of memory with four segments and a small hole after each. A new program E does not fit into any single hole.](images/problem3-holes.svg)
+
+**2. Compaction puts the free memory together.**
+
+The OS moves all segments to one side. All the small holes become one big hole.
+
+![Before compaction: segments A, B, C, D with a hole after each. After compaction: A, B, C, D next to each other and one big hole, where program E fits.](images/problem3-compaction.svg)
+
+**3. Compaction costs CPU time.**
+
+To move a segment, the CPU must copy every byte of it. While the CPU copies, it cannot run programs.
+
+**4. The question.**
+
+How many bytes does one compaction copy, and how long does that take?
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [4 – The Abstraction: The Process](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [16 – Segmentation](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf), [17 – Free-Space Management](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [21 – Beyond Physical Memory: Mechanisms](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf).
