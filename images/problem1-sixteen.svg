@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" role="img" aria-labelledby="p1d-title p1d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p1d-title">The 16 possible moments for four programs</title>
+  <desc id="p1d-desc">A grid with 16 cells. Each cell shows four programs, and each program either computes, letter C, or waits, letter W. The cells go from C C C C to W W W W. In 15 cells at least one program computes, so the CPU is busy. Only in the last cell, W W W W, all four programs wait and the CPU is idle.</desc>
+  <defs>
+    <g id="p1d-c">
+      <rect width="30" height="30" rx="4" fill="#86efac" stroke="#16a34a"/>
+      <text x="15" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">C</text>
+    </g>
+    <g id="p1d-w">
+      <rect width="30" height="30" rx="4" fill="#fed7aa" stroke="#ea580c"/>
+      <text x="15" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#7c2d12">W</text>
+    </g>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="355" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Every possible moment: each program computes (C) or waits (W)</text>
+
+  <g fill="#f8fafc" stroke="#cbd5e1">
+    <rect x="56" y="56" width="150" height="50" rx="8"/>
+    <rect x="222" y="56" width="150" height="50" rx="8"/>
+    <rect x="388" y="56" width="150" height="50" rx="8"/>
+    <rect x="554" y="56" width="150" height="50" rx="8"/>
+    <rect x="56" y="118" width="150" height="50" rx="8"/>
+    <rect x="222" y="118" width="150" height="50" rx="8"/>
+    <rect x="388" y="118" width="150" height="50" rx="8"/>
+    <rect x="554" y="118" width="150" height="50" rx="8"/>
+    <rect x="56" y="180" width="150" height="50" rx="8"/>
+    <rect x="222" y="180" width="150" height="50" rx="8"/>
+    <rect x="388" y="180" width="150" height="50" rx="8"/>
+    <rect x="554" y="180" width="150" height="50" rx="8"/>
+    <rect x="56" y="242" width="150" height="50" rx="8"/>
+    <rect x="222" y="242" width="150" height="50" rx="8"/>
+    <rect x="388" y="242" width="150" height="50" rx="8"/>
+  </g>
+  <rect x="554" y="242" width="150" height="50" rx="8" fill="#ffedd5" stroke="#ea580c" stroke-width="2.5"/>
+
+  <g id="p1d-row1">
+    <use href="#p1d-c" x="66" y="66"/><use href="#p1d-c" x="99" y="66"/><use href="#p1d-c" x="132" y="66"/><use href="#p1d-c" x="165" y="66"/>
+    <use href="#p1d-c" x="232" y="66"/><use href="#p1d-c" x="265" y="66"/><use href="#p1d-c" x="298" y="66"/><use href="#p1d-w" x="331" y="66"/>
+    <use href="#p1d-c" x="398" y="66"/><use href="#p1d-c" x="431" y="66"/><use href="#p1d-w" x="464" y="66"/><use href="#p1d-c" x="497" y="66"/>
+    <use href="#p1d-c" x="564" y="66"/><use href="#p1d-c" x="597" y="66"/><use href="#p1d-w" x="630" y="66"/><use href="#p1d-w" x="663" y="66"/>
+  </g>
+  <g id="p1d-row2">
+    <use href="#p1d-c" x="66" y="128"/><use href="#p1d-w" x="99" y="128"/><use href="#p1d-c" x="132" y="128"/><use href="#p1d-c" x="165" y="128"/>
+    <use href="#p1d-c" x="232" y="128"/><use href="#p1d-w" x="265" y="128"/><use href="#p1d-c" x="298" y="128"/><use href="#p1d-w" x="331" y="128"/>
+    <use href="#p1d-c" x="398" y="128"/><use href="#p1d-w" x="431" y="128"/><use href="#p1d-w" x="464" y="128"/><use href="#p1d-c" x="497" y="128"/>
+    <use href="#p1d-c" x="564" y="128"/><use href="#p1d-w" x="597" y="128"/><use href="#p1d-w" x="630" y="128"/><use href="#p1d-w" x="663" y="128"/>
+  </g>
+  <g id="p1d-row3">
+    <use href="#p1d-w" x="66" y="190"/><use href="#p1d-c" x="99" y="190"/><use href="#p1d-c" x="132" y="190"/><use href="#p1d-c" x="165" y="190"/>
+    <use href="#p1d-w" x="232" y="190"/><use href="#p1d-c" x="265" y="190"/><use href="#p1d-c" x="298" y="190"/><use href="#p1d-w" x="331" y="190"/>
+    <use href="#p1d-w" x="398" y="190"/><use href="#p1d-c" x="431" y="190"/><use href="#p1d-w" x="464" y="190"/><use href="#p1d-c" x="497" y="190"/>
+    <use href="#p1d-w" x="564" y="190"/><use href="#p1d-c" x="597" y="190"/><use href="#p1d-w" x="630" y="190"/><use href="#p1d-w" x="663" y="190"/>
+  </g>
+  <g id="p1d-row4">
+    <use href="#p1d-w" x="66" y="252"/><use href="#p1d-w" x="99" y="252"/><use href="#p1d-c" x="132" y="252"/><use href="#p1d-c" x="165" y="252"/>
+    <use href="#p1d-w" x="232" y="252"/><use href="#p1d-w" x="265" y="252"/><use href="#p1d-c" x="298" y="252"/><use href="#p1d-w" x="331" y="252"/>
+    <use href="#p1d-w" x="398" y="252"/><use href="#p1d-w" x="431" y="252"/><use href="#p1d-w" x="464" y="252"/><use href="#p1d-c" x="497" y="252"/>
+    <use href="#p1d-w" x="564" y="252"/><use href="#p1d-w" x="597" y="252"/><use href="#p1d-w" x="630" y="252"/><use href="#p1d-w" x="663" y="252"/>
+  </g>
+
+  <text x="629" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">CPU idle</text>
+  <text x="56" y="318" font-size="12" fill="#475569">In 15 of the 16 moments at least one program computes: the CPU is busy.</text>
+  <text x="56" y="336" font-size="12" fill="#475569">Only in 1 of the 16 moments all four programs wait: the CPU is idle.</text>
+</svg>

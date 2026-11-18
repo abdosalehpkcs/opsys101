@@ -118,6 +118,51 @@ All four programs stay in memory, also when they wait (there is no swapping). Wh
 
 For what part of the time do all four programs wait at the same moment?
 
+### Solution, step by step
+
+**Step 1 – One program.** A program waits 1/2 of the time. With only one program in memory, the CPU is idle 1/2 of the time.
+
+**Step 2 – Add a second program.** Look only at the time when program 1 waits. Program 2 waits during half of this time. So both programs wait during 1/2 of 1/2 of the time:
+
+```
+1/2 × 1/2 = 1/4
+```
+
+**Step 3 – Add the third and the fourth program.** Each new program cuts the idle time in half again:
+
+```
+1/2 × 1/2 × 1/2 × 1/2 = 1/16
+```
+
+![Four bars. The idle part is 1/2 with 1 program, 1/4 with 2 programs, 1/8 with 3 programs and 1/16 with 4 programs.](images/problem1-halving.svg)
+
+We may multiply like this because the programs are **independent**: one program does not change when another program waits [7, §3.2].
+
+**Step 4 – Change to percent.**
+
+```
+1 ÷ 16 = 0.0625 = 6.25 %
+```
+
+**Step 5 – Check by counting.** At any moment each program either computes (C) or waits (W). Four programs give 2 × 2 × 2 × 2 = 16 possible moments. All 16 have the same chance, because a program computes and waits equally often. In only one of them all four programs wait:
+
+![A grid of the 16 possible moments, from CCCC to WWWW. Only in the last one, WWWW, all four programs wait and the CPU is idle.](images/problem1-sixteen.svg)
+
+One of sixteen is 1/16. This is the same result.
+
+**The general rule** [3, §2.1.7]. Let p be the part of the time that a program waits, and n the number of programs in memory:
+
+```
+idle time        = pⁿ
+CPU utilization  = 1 − pⁿ
+```
+
+Here p = 0.5 and n = 4, so the idle time is 0.5⁴ = 0.0625. We use this rule again in Problem 2.
+
+### Answer
+
+On average **6.25%** of the CPU time is not used. The CPU is busy 93.75% of the time.
+
 ---
 
 ## References

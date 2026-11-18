@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 246" role="img" aria-labelledby="p1c-title p1c-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p1c-title">Each new program cuts the idle time in half</title>
+  <desc id="p1c-desc">Four bars. Each bar is the whole time. The orange part is the time when all programs wait and the CPU is idle. With 1 program the idle part is one half, 50 percent. With 2 programs it is one quarter, 25 percent. With 3 programs it is one eighth, 12.5 percent. With 4 programs it is one sixteenth, 6.25 percent.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="245" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Each new program cuts the idle time in half</text>
+
+  <g font-size="13" fill="#334155">
+    <text x="24" y="72">1 program</text>
+    <text x="24" y="112">2 programs</text>
+    <text x="24" y="152">3 programs</text>
+    <text x="24" y="192">4 programs</text>
+  </g>
+
+  <g fill="#86efac" stroke="#16a34a">
+    <rect x="355" y="52" width="225" height="30" rx="3"/>
+    <rect x="242.5" y="92" width="337.5" height="30" rx="3"/>
+    <rect x="186.25" y="132" width="393.75" height="30" rx="3"/>
+    <rect x="158.125" y="172" width="421.875" height="30" rx="3"/>
+  </g>
+  <g fill="#fdba74" stroke="#ea580c">
+    <rect x="130" y="52" width="225" height="30" rx="3"/>
+    <rect x="130" y="92" width="112.5" height="30" rx="3"/>
+    <rect x="130" y="132" width="56.25" height="30" rx="3"/>
+    <rect x="130" y="172" width="28.125" height="30" rx="3"/>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#14532d">
+    <text x="467.5" y="72">CPU busy</text>
+    <text x="411" y="112">CPU busy</text>
+    <text x="383" y="152">CPU busy</text>
+    <text x="369" y="192">CPU busy</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#7c2d12">
+    <text x="242.5" y="72">all wait</text>
+    <text x="186" y="112">all wait</text>
+  </g>
+  <g font-size="13" font-weight="700" fill="#7c2d12">
+    <text x="594" y="72">idle 1/2 = 50%</text>
+    <text x="594" y="112">idle 1/4 = 25%</text>
+    <text x="594" y="152">idle 1/8 = 12.5%</text>
+    <text x="594" y="192">idle 1/16 = 6.25%</text>
+  </g>
+
+  <rect x="24" y="214" width="14" height="14" rx="3" fill="#fdba74" stroke="#ea580c"/>
+  <text x="44" y="226" font-size="12" fill="#475569">all programs wait: the CPU is idle</text>
+  <rect x="300" y="214" width="14" height="14" rx="3" fill="#86efac" stroke="#16a34a"/>
+  <text x="320" y="226" font-size="12" fill="#475569">at least one program computes: the CPU is busy</text>
+</svg>
