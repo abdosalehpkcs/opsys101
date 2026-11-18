@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 312" role="img" aria-labelledby="p5d-title p5d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p5d-title">The logical address and the physical address, bit by bit</title>
+  <desc id="p5d-desc">The logical address has 13 bits: 3 bits for the page number and 10 bits for the offset. In the example the bits are 101 for page 5 and 0001100100 for offset 100. The physical address has 15 bits: 5 bits for the frame number and 10 bits for the offset. In the example the bits are 10010 for frame 18 and 0001100100 for offset 100.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="311" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">The two addresses, bit by bit</text>
+  <text x="24" y="54" font-size="12" fill="#475569">Example: page 5, offset 100. The page table says that page 5 is in frame 18.</text>
+
+  <g id="p5d-logical">
+    <text x="104" y="80" font-size="13" font-weight="700" fill="#334155">Logical address</text>
+    <g fill="#dbeafe" stroke="#2563eb">
+      <rect x="104" y="88" width="36" height="36" rx="4"/>
+      <rect x="144" y="88" width="36" height="36" rx="4"/>
+      <rect x="184" y="88" width="36" height="36" rx="4"/>
+    </g>
+    <g fill="#fef3c7" stroke="#d97706">
+      <rect x="224" y="88" width="36" height="36" rx="4"/>
+      <rect x="264" y="88" width="36" height="36" rx="4"/>
+      <rect x="304" y="88" width="36" height="36" rx="4"/>
+      <rect x="344" y="88" width="36" height="36" rx="4"/>
+      <rect x="384" y="88" width="36" height="36" rx="4"/>
+      <rect x="424" y="88" width="36" height="36" rx="4"/>
+      <rect x="464" y="88" width="36" height="36" rx="4"/>
+      <rect x="504" y="88" width="36" height="36" rx="4"/>
+      <rect x="544" y="88" width="36" height="36" rx="4"/>
+      <rect x="584" y="88" width="36" height="36" rx="4"/>
+    </g>
+    <g font-size="15" font-weight="700" text-anchor="middle" fill="#1e3a8a">
+      <text x="122" y="112">1</text>
+      <text x="162" y="112">0</text>
+      <text x="202" y="112">1</text>
+    </g>
+    <g font-size="15" font-weight="700" text-anchor="middle" fill="#78350f">
+      <text x="242" y="112">0</text>
+      <text x="282" y="112">0</text>
+      <text x="322" y="112">0</text>
+      <text x="362" y="112">1</text>
+      <text x="402" y="112">1</text>
+      <text x="442" y="112">0</text>
+      <text x="482" y="112">0</text>
+      <text x="522" y="112">1</text>
+      <text x="562" y="112">0</text>
+      <text x="602" y="112">0</text>
+    </g>
+    <path d="M104 130 V137 H220 V130" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+    <path d="M224 130 V137 H620 V130" fill="none" stroke="#d97706" stroke-width="1.5"/>
+    <text x="162" y="155" text-anchor="middle" font-size="13" fill="#1e3a8a">page number: 3 bits</text>
+    <text x="162" y="172" text-anchor="middle" font-size="12" fill="#475569">101 = 5</text>
+    <text x="422" y="155" text-anchor="middle" font-size="13" fill="#78350f">offset: 10 bits</text>
+    <text x="422" y="172" text-anchor="middle" font-size="12" fill="#475569">0001100100 = 100</text>
+    <text x="634" y="112" font-size="15" font-weight="700" fill="#0f172a">= 13 bits</text>
+  </g>
+
+  <g id="p5d-physical">
+    <text x="24" y="206" font-size="13" font-weight="700" fill="#334155">Physical address</text>
+    <g fill="#ede9fe" stroke="#7c3aed">
+      <rect x="24" y="214" width="36" height="36" rx="4"/>
+      <rect x="64" y="214" width="36" height="36" rx="4"/>
+      <rect x="104" y="214" width="36" height="36" rx="4"/>
+      <rect x="144" y="214" width="36" height="36" rx="4"/>
+      <rect x="184" y="214" width="36" height="36" rx="4"/>
+    </g>
+    <g fill="#fef3c7" stroke="#d97706">
+      <rect x="224" y="214" width="36" height="36" rx="4"/>
+      <rect x="264" y="214" width="36" height="36" rx="4"/>
+      <rect x="304" y="214" width="36" height="36" rx="4"/>
+      <rect x="344" y="214" width="36" height="36" rx="4"/>
+      <rect x="384" y="214" width="36" height="36" rx="4"/>
+      <rect x="424" y="214" width="36" height="36" rx="4"/>
+      <rect x="464" y="214" width="36" height="36" rx="4"/>
+      <rect x="504" y="214" width="36" height="36" rx="4"/>
+      <rect x="544" y="214" width="36" height="36" rx="4"/>
+      <rect x="584" y="214" width="36" height="36" rx="4"/>
+    </g>
+    <g font-size="15" font-weight="700" text-anchor="middle" fill="#4c1d95">
+      <text x="42" y="238">1</text>
+      <text x="82" y="238">0</text>
+      <text x="122" y="238">0</text>
+      <text x="162" y="238">1</text>
+      <text x="202" y="238">0</text>
+    </g>
+    <g font-size="15" font-weight="700" text-anchor="middle" fill="#78350f">
+      <text x="242" y="238">0</text>
+      <text x="282" y="238">0</text>
+      <text x="322" y="238">0</text>
+      <text x="362" y="238">1</text>
+      <text x="402" y="238">1</text>
+      <text x="442" y="238">0</text>
+      <text x="482" y="238">0</text>
+      <text x="522" y="238">1</text>
+      <text x="562" y="238">0</text>
+      <text x="602" y="238">0</text>
+    </g>
+    <path d="M24 256 V263 H220 V256" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+    <path d="M224 256 V263 H620 V256" fill="none" stroke="#d97706" stroke-width="1.5"/>
+    <text x="122" y="281" text-anchor="middle" font-size="13" fill="#4c1d95">frame number: 5 bits</text>
+    <text x="122" y="298" text-anchor="middle" font-size="12" fill="#475569">10010 = 18</text>
+    <text x="422" y="281" text-anchor="middle" font-size="13" fill="#78350f">offset: 10 bits</text>
+    <text x="422" y="298" text-anchor="middle" font-size="12" fill="#475569">0001100100 = 100</text>
+    <text x="634" y="238" font-size="15" font-weight="700" fill="#0f172a">= 15 bits</text>
+  </g>
+</svg>

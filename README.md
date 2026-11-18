@@ -528,7 +528,59 @@ A computer writes every number in bits. We must find how many bits each address 
 
 The rule is in [Powers of two](#powers-of-two): b bits can write 2ᵇ different numbers. So to choose one of N things, we need b bits, where 2ᵇ = N.
 
+### Solution, step by step
+
+An address is two numbers, one after the other. So we count the bits of each number, and then we add them.
+
+**Step 1 – Count the bits of each number.** Each number chooses one thing out of N things. It needs b bits, where 2ᵇ = N.
+
+| Number | It chooses one of | Bits it needs |
+|---|---|---|
+| Offset | 1024 words | 10, because 2¹⁰ = 1024 |
+| Page number | 8 pages | 3, because 2³ = 8 |
+| Frame number | 32 frames | 5, because 2⁵ = 32 |
+
+**Step 2 – The logical address: answer (a).** It is the page number and the offset:
+
+```
+3 + 10 = 13 bits
+```
+
+**Step 3 – The physical address: answer (b).** It is the frame number and the offset:
+
+```
+5 + 10 = 15 bits
+```
+
+**Step 4 – See it in the example.** Here are both addresses of our example: page 5, offset 100, stored in frame 18.
+
+![The logical address has 3 bits for the page number and 10 bits for the offset, 13 bits in total. The physical address has 5 bits for the frame number and 10 bits for the offset, 15 bits in total.](images/problem5-bits.svg)
+
+The last 10 bits are the same in both addresses. Only the first part changes. It needs 5 bits and not 3, because there are 32 frames to choose from, not 8 pages.
+
+**Check.** Count all the words:
+
+```
+logical:   8 pages  × 1024 words =  8192 words = 2¹³   → 13 bits
+physical: 32 frames × 1024 words = 32768 words = 2¹⁵   → 15 bits
+```
+
+### Answer
+
+- **(a)** A logical address has **13 bits**.
+- **(b)** A physical address has **15 bits**.
+
 ---
+
+## Summary
+
+| Problem | Main idea | Formula | Result |
+|---|---|---|---|
+| 1 | The CPU is idle only when all programs wait at the same time | idle = pⁿ | 6.25% idle |
+| 2 | Memory decides the number of programs, and this decides CPU utilization | utilization = 1 − pⁿ | (a) +13.8%, (b) add 3.5 MB |
+| 3 | Compaction must copy every used byte | time = used bytes × time for one byte | (a) about 36%, (b) at most once every 3.57 s |
+| 4 | The cost of one page fault is shared among k instructions | 1 + n ÷ k | 1 + n ÷ k µs |
+| 5 | Address = page number + offset | bits = log₂(number of things) | (a) 13 bits, (b) 15 bits |
 
 ## References
 
