@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 246" role="img" aria-labelledby="p3d-title p3d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p3d-title">CPU time with compaction every 1 second and every 3.57 seconds</title>
+  <desc id="p3d-desc">Two time lines from 0 to 3.57 seconds. In part a, compaction starts every 1 second and takes 0.357 seconds each time, so it uses 36 percent of the CPU time. In part b, compaction starts every 3.57 seconds and takes 0.357 seconds, so it uses 10 percent of the CPU time. The rest of the time the CPU runs programs.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="245" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">The same compaction, done more often or less often</text>
+
+  <g id="p3d-a">
+    <text x="24" y="58" font-size="13" fill="#334155">Part (a): compaction every 1 s. It takes 0.357 s of every second: 36% of the CPU time.</text>
+    <g fill="#fdba74" stroke="#ea580c">
+      <rect x="24" y="66" width="64.26" height="34" rx="3"/>
+      <rect x="204" y="66" width="64.26" height="34" rx="3"/>
+      <rect x="384" y="66" width="64.26" height="34" rx="3"/>
+      <rect x="564" y="66" width="64.26" height="34" rx="3"/>
+    </g>
+    <g fill="#86efac" stroke="#16a34a">
+      <rect x="88.26" y="66" width="115.74" height="34" rx="3"/>
+      <rect x="268.26" y="66" width="115.74" height="34" rx="3"/>
+      <rect x="448.26" y="66" width="115.74" height="34" rx="3"/>
+      <rect x="628.26" y="66" width="38.34" height="34" rx="3"/>
+    </g>
+    <g text-anchor="middle" font-size="11" font-weight="700" fill="#7c2d12">
+      <text x="56.1" y="87">copy</text>
+      <text x="236.1" y="87">copy</text>
+      <text x="416.1" y="87">copy</text>
+      <text x="596.1" y="87">copy</text>
+    </g>
+    <g text-anchor="middle" font-size="11" fill="#14532d">
+      <text x="146.1" y="87">programs</text>
+      <text x="326.1" y="87">programs</text>
+      <text x="506.1" y="87">programs</text>
+    </g>
+  </g>
+
+  <g id="p3d-b">
+    <text x="24" y="128" font-size="13" fill="#334155">Part (b): compaction every 3.57 s. It takes 0.357 s of every 3.57 s: 10% of the CPU time.</text>
+    <rect x="24" y="136" width="64.26" height="34" rx="3" fill="#fdba74" stroke="#ea580c"/>
+    <rect x="88.26" y="136" width="578.34" height="34" rx="3" fill="#86efac" stroke="#16a34a"/>
+    <text x="56.1" y="157" text-anchor="middle" font-size="11" font-weight="700" fill="#7c2d12">copy</text>
+    <text x="377" y="157" text-anchor="middle" font-size="11" fill="#14532d">the CPU runs programs</text>
+    <line x1="666.6" y1="132" x2="666.6" y2="174" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="673" y="150" font-size="10" fill="#9a3412">next</text>
+    <text x="673" y="163" font-size="10" fill="#9a3412">compaction</text>
+  </g>
+
+  <g id="p3d-axis">
+    <line x1="24" y1="184" x2="666.6" y2="184" stroke="#64748b" stroke-width="1.5"/>
+    <g stroke="#64748b" stroke-width="1.5">
+      <line x1="24" y1="180" x2="24" y2="188"/>
+      <line x1="204" y1="180" x2="204" y2="188"/>
+      <line x1="384" y1="180" x2="384" y2="188"/>
+      <line x1="564" y1="180" x2="564" y2="188"/>
+      <line x1="666.6" y1="180" x2="666.6" y2="188"/>
+    </g>
+    <g font-size="11" text-anchor="middle" fill="#475569">
+      <text x="24" y="203" text-anchor="start">0 s</text>
+      <text x="204" y="203">1 s</text>
+      <text x="384" y="203">2 s</text>
+      <text x="564" y="203">3 s</text>
+      <text x="666.6" y="203">3.57 s</text>
+    </g>
+  </g>
+
+  <rect x="24" y="216" width="14" height="14" rx="3" fill="#fdba74" stroke="#ea580c"/>
+  <text x="44" y="228" font-size="12" fill="#475569">compaction: the CPU copies memory (0.357 s)</text>
+  <rect x="370" y="216" width="14" height="14" rx="3" fill="#86efac" stroke="#16a34a"/>
+  <text x="390" y="228" font-size="12" fill="#475569">the CPU runs programs</text>
+</svg>

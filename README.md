@@ -330,6 +330,62 @@ To move a segment, the CPU must copy every byte of it. While the CPU copies, it 
 
 How many bytes does one compaction copy, and how long does that take?
 
+### Solution, step by step
+
+#### Part (a)
+
+**Step 1 – How many bytes are copied?** Only segments are copied. A hole is empty, so there is nothing to copy.
+
+The problem says that a hole is 0.4 times as large as a segment. So for every 1 part of segment there is 0.4 part of hole:
+
+```
+used part   = 1 ÷ (1 + 0.4) = 1 ÷ 1.4 ≈ 0.714       → 71.4 % of the memory
+used bytes  = 1 000 000 bytes ÷ 1.4 ≈ 714 286 bytes
+```
+
+![One segment is 1 part and its hole is 0.4 part, so the used part is 1 ÷ 1.4 = 71.4%. In 1 000 000 bytes of memory, the segments take 714 286 bytes and the holes take 285 714 bytes.](images/problem3-used-part.svg)
+
+The lecture solution writes the same thing with a letter. If d is the size of all segments together, then d + 0.4 × d = 1 MB, so d = 1 MB ÷ 1.4.
+
+**Step 2 – How long does one compaction take?** Copying one byte takes 0.5 µs:
+
+```
+714 286 bytes × 0.5 µs = 357 143 µs ≈ 0.357 s
+```
+
+**Step 3 – What part of the CPU time is that?** Compaction runs once every second. So in every second the CPU copies for 0.357 s:
+
+```
+0.357 s ÷ 1 s = 0.357  ≈  36 %
+```
+
+#### Part (b)
+
+One compaction always takes 0.357 s. We cannot make it shorter. We can only do it less often.
+
+Let T be the time from the start of one compaction to the start of the next one. Then compaction uses 0.357 s out of every T seconds. This must be at most 10%:
+
+```
+0.357 s ÷ T ≤ 0.10
+T ≥ 0.357 s ÷ 0.10
+T ≥ 3.57 s
+```
+
+![Two time lines. With compaction every 1 s, copying takes 0.357 s of every second: 36% of the CPU time. With compaction every 3.57 s, it takes 0.357 s of every 3.57 s: 10%.](images/problem3-time.svg)
+
+### Answer
+
+- **(a)** Compaction uses about **36%** of the CPU time. More than one third of the CPU does nothing useful for the programs.
+- **(b)** The system can do compaction **at most once every 3.57 s** (about once every 3.6 s, or less often).
+
+**What we learn.** Compaction solves external fragmentation, but it is very expensive. This is one reason why systems moved to paging: it "does not lead to external fragmentation" [1, §18.6].
+
+### Notes on this solution
+
+- **Which megabyte?** The lecture solution uses 1 MB = 1 000 000 bytes. With 1 MB = 1 048 576 bytes the results are a little higher: 0.3745 s for one compaction, about 37.4% in part (a), and about 3.75 s in part (b). The method is the same.
+- **Is there really one hole for every segment?** Not exactly. Two segments can be neighbours. Two holes cannot be neighbours, because two holes side by side are simply one bigger hole. So real memory has fewer holes than segments [4, §3.2.2]. The problem uses the simple picture to keep the calculation easy.
+- **Does every segment really move?** A segment at the very beginning of memory is already in the right place. The problem ignores this and counts all used bytes.
+
 ---
 
 ## References
