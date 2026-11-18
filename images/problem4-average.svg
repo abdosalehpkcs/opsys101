@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 302" role="img" aria-labelledby="p4d-title p4d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p4d-title">Why we divide by k: a small example with 4 instructions and a page fault of 8 microseconds</title>
+  <desc id="p4d-desc">Top row: four instructions of 1 microsecond each and one page fault of 8 microseconds. The total time is 12 microseconds. Bottom row: the 8 microseconds of the page fault are shared equally among the four instructions, 2 microseconds for each. Now every instruction takes 3 microseconds. This is the average: 12 divided by 4.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="301" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">A small example: k = 4 instructions, n = 8 µs</text>
+
+  <g id="p4d-real">
+    <text x="24" y="60" font-size="13" font-weight="700" fill="#334155">What really happens</text>
+    <g fill="#86efac" stroke="#16a34a">
+      <rect x="24" y="70" width="54" height="40" rx="3"/>
+      <rect x="80" y="70" width="54" height="40" rx="3"/>
+      <rect x="136" y="70" width="54" height="40" rx="3"/>
+      <rect x="192" y="70" width="54" height="40" rx="3"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#14532d">
+      <text x="51" y="95">1 µs</text>
+      <text x="107" y="95">1 µs</text>
+      <text x="163" y="95">1 µs</text>
+      <text x="219" y="95">1 µs</text>
+    </g>
+    <rect x="248" y="70" width="446" height="40" rx="3" fill="#fed7aa" stroke="#ea580c"/>
+    <text x="471" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">page fault: 8 µs</text>
+    <path d="M24 117 V124 H694 V117" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    <text x="359" y="143" text-anchor="middle" font-size="13" fill="#0f172a">total time = 4 × 1 µs + 8 µs = 12 µs</text>
+  </g>
+
+  <g id="p4d-average">
+    <text x="24" y="176" font-size="13" font-weight="700" fill="#334155">Share the 8 µs of the page fault equally: 8 ÷ 4 = 2 µs for each instruction</text>
+    <g fill="#86efac" stroke="#16a34a">
+      <rect x="24" y="186" width="54" height="40" rx="3"/>
+      <rect x="192" y="186" width="54" height="40" rx="3"/>
+      <rect x="360" y="186" width="54" height="40" rx="3"/>
+      <rect x="528" y="186" width="54" height="40" rx="3"/>
+    </g>
+    <g fill="#fed7aa" stroke="#ea580c">
+      <rect x="80" y="186" width="110" height="40" rx="3"/>
+      <rect x="248" y="186" width="110" height="40" rx="3"/>
+      <rect x="416" y="186" width="110" height="40" rx="3"/>
+      <rect x="584" y="186" width="110" height="40" rx="3"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#14532d">
+      <text x="51" y="211">1 µs</text>
+      <text x="219" y="211">1 µs</text>
+      <text x="387" y="211">1 µs</text>
+      <text x="555" y="211">1 µs</text>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#7c2d12">
+      <text x="135" y="211">+ 2 µs</text>
+      <text x="303" y="211">+ 2 µs</text>
+      <text x="471" y="211">+ 2 µs</text>
+      <text x="639" y="211">+ 2 µs</text>
+    </g>
+    <g fill="none" stroke="#64748b" stroke-width="1.5">
+      <path d="M24 233 V240 H190 V233"/>
+      <path d="M192 233 V240 H358 V233"/>
+      <path d="M360 233 V240 H526 V233"/>
+      <path d="M528 233 V240 H694 V233"/>
+    </g>
+    <g font-size="13" font-weight="700" text-anchor="middle" fill="#0f172a">
+      <text x="107" y="258">3 µs</text>
+      <text x="275" y="258">3 µs</text>
+      <text x="443" y="258">3 µs</text>
+      <text x="611" y="258">3 µs</text>
+    </g>
+    <text x="24" y="282" font-size="13" fill="#0f172a">The total time is the same, but now every instruction has the same length: 12 µs ÷ 4 = 3 µs.</text>
+  </g>
+</svg>

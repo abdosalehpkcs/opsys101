@@ -421,6 +421,60 @@ The program runs many fast instructions. From time to time one instruction has a
 
 The problem gives letters, not numbers. So the answer is a **formula**, not a number.
 
+### Solution, step by step
+
+We first solve a small example with numbers. Then we put the letters back.
+
+**Step 1 – A small example.** Take **4 instructions**. One of them has a page fault that costs **8 µs more**.
+
+```
+instruction 1:  1 µs
+instruction 2:  1 µs
+instruction 3:  1 µs
+instruction 4:  1 µs + 8 µs waiting for the disk = 9 µs
+
+all four together: 1 + 1 + 1 + 9 = 12 µs
+```
+
+**Step 2 – Find the time of one instruction.** The 12 µs is the time of **all four together**. The question asks for **one** instruction. So we share the time among the four:
+
+```
+12 µs ÷ 4 instructions = 3 µs for one instruction
+```
+
+![Top row: four instructions of 1 µs and one page fault of 8 µs, 12 µs in total. Bottom row: the 8 µs are shared equally, so every instruction takes 1 + 2 = 3 µs.](images/problem4-average.svg)
+
+The 3 µs has two parts:
+
+- **1 µs** is the instruction's own work.
+- **2 µs** is its share of the page fault: 8 µs shared among 4 instructions is 8 ÷ 4 = 2 µs.
+
+**Step 3 – Put the letters back.** In the problem the group has **k** instructions, not 4, and the page fault costs **n** µs, not 8. A page fault comes once every k instructions, so a group of k instructions has exactly one page fault.
+
+```
+with numbers:  (4 + 8) ÷ 4 = 1 + 8 ÷ 4 = 3 µs
+with letters:  (k + n) ÷ k = 1 + n ÷ k   µs
+```
+
+So "divide by k" means "divide by the number of instructions in the group".
+
+**Step 4 – Check with a second example.** Take n = 2000 µs and k = 1000:
+
+```
+1000 instructions × 1 µs = 1000 µs
+one page fault           = 2000 µs
+together                 = 3000 µs
+
+3000 µs ÷ 1000 instructions = 3 µs for one instruction
+with the formula: 1 + 2000 ÷ 1000 = 3 µs
+```
+
+### Answer
+
+The effective time of one instruction is **1 + n ÷ k µs**.
+
+**What we learn.** The first part (1) is the instruction's own work. The second part (n ÷ k) is its share of the page fault. A system with virtual memory is fast only when page faults are rare.
+
 ---
 
 ## References
