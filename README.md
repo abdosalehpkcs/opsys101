@@ -477,6 +477,59 @@ The effective time of one instruction is **1 + n ÷ k µs**.
 
 ---
 
+## Problem 5 – How Many Bits Does an Address Need?
+
+*Topic: virtual memory with paging.*
+
+### The problem
+
+The logical address space of every process has **8 pages**. Each page has **1024 words**. The logical address space is mapped to a physical memory with **32 page frames**.
+
+- **(a)** How many bits does a logical address have?
+- **(b)** How many bits does a physical address have?
+
+### Understand the situation
+
+**1. Memory is cut into blocks of the same size.**
+
+- A block of the process's logical memory is a **page** [1, ch. 18]. The process has 8 pages.
+- A block of the physical memory is a **frame** [1, ch. 18]. The memory has 32 frames.
+- Every block has 1024 words. Each page is stored in one frame.
+
+![One process with 8 pages on the left and a physical memory with 32 page frames on the right. As an example, page 5 is stored in frame 18.](images/problem5-pages-frames.svg)
+
+**2. To find one word, the program needs two numbers.**
+
+> **Hint:** A program reads and writes words in memory all the time. Each time, it must say which word it wants. This "which word" is the address. With paging, the address is two numbers.
+
+- The **page number** says which page.
+- The **offset** says which word inside that page.
+
+Example: "page 5, offset 100" means word 100 of page 5. These two numbers together are the **logical address**.
+
+![The 8 pages of the process with page 5 marked. Below it, the 1024 words of page 5 with word 100 marked. The address is page number 5 and offset 100.](images/problem5-address-parts.svg)
+
+**3. The memory needs two numbers too.**
+
+> **Hint:** The memory hardware does not know pages. It only knows frames. To find a word, it must know which frame, and which word inside that frame. So the page number must be changed into a frame number.
+
+Page 5 is stored in frame 18. The page table says this. So the same word is word 100 of frame 18.
+
+- The **frame number** says which frame.
+- The **offset** says which word inside that frame. It does not change, because a page and a frame have the same size.
+
+These two numbers together are the **physical address**.
+
+![The logical address is page number 5 and offset 100. The page table says that page 5 is in frame 18. The physical address is frame number 18 and offset 100.](images/problem5-translation.svg)
+
+**4. The question: how many bits?**
+
+A computer writes every number in bits. We must find how many bits each address needs.
+
+The rule is in [Powers of two](#powers-of-two): b bits can write 2ᵇ different numbers. So to choose one of N things, we need b bits, where 2ᵇ = N.
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [4 – The Abstraction: The Process](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [16 – Segmentation](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf), [17 – Free-Space Management](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [21 – Beyond Physical Memory: Mechanisms](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf).

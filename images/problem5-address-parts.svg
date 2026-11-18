@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 292" role="img" aria-labelledby="p5b-title p5b-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p5b-title">An address has two parts: the page number and the offset</title>
+  <desc id="p5b-desc">The top row shows the 8 pages of the process, with page 5 marked. Below it, page 5 is shown larger: it has 1024 words, from word 0 to word 1023, and word 100 is marked. The address is made of two parts: page number 5, which says which page, and offset 100, which says which word inside the page.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="291" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">An address says two things: which page, and which word inside the page</text>
+
+  <g id="p5b-pages">
+    <text x="24" y="60" font-size="13" font-weight="700" fill="#334155">The 8 pages of the process</text>
+    <g fill="#dbeafe" stroke="#2563eb">
+      <rect x="24" y="70" width="80" height="40" rx="5"/>
+      <rect x="113" y="70" width="80" height="40" rx="5"/>
+      <rect x="202" y="70" width="80" height="40" rx="5"/>
+      <rect x="291" y="70" width="80" height="40" rx="5"/>
+      <rect x="380" y="70" width="80" height="40" rx="5"/>
+      <rect x="558" y="70" width="80" height="40" rx="5"/>
+      <rect x="647" y="70" width="80" height="40" rx="5"/>
+    </g>
+    <rect x="469" y="70" width="80" height="40" rx="5" fill="#2563eb" stroke="#1e3a8a"/>
+    <g font-size="12" text-anchor="middle" fill="#1e3a8a">
+      <text x="64" y="95">page 0</text>
+      <text x="153" y="95">page 1</text>
+      <text x="242" y="95">page 2</text>
+      <text x="331" y="95">page 3</text>
+      <text x="420" y="95">page 4</text>
+      <text x="598" y="95">page 6</text>
+      <text x="687" y="95">page 7</text>
+    </g>
+    <text x="509" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">page 5</text>
+  </g>
+
+  <path d="M469 110 L549 110 L736 146 L24 146 Z" fill="#dbeafe" opacity="0.55"/>
+
+  <g id="p5b-words">
+    <g fill="#fef3c7" stroke="#d97706">
+      <rect x="24" y="146" width="84" height="40" rx="5"/>
+      <rect x="112" y="146" width="84" height="40" rx="5"/>
+      <rect x="244" y="146" width="84" height="40" rx="5"/>
+      <rect x="428" y="146" width="84" height="40" rx="5"/>
+      <rect x="560" y="146" width="84" height="40" rx="5"/>
+      <rect x="648" y="146" width="88" height="40" rx="5"/>
+    </g>
+    <rect x="332" y="146" width="92" height="40" rx="5" fill="#d97706" stroke="#78350f"/>
+    <g fill="#d97706">
+      <circle cx="212" cy="166" r="2.5"/>
+      <circle cx="220" cy="166" r="2.5"/>
+      <circle cx="228" cy="166" r="2.5"/>
+      <circle cx="528" cy="166" r="2.5"/>
+      <circle cx="536" cy="166" r="2.5"/>
+      <circle cx="544" cy="166" r="2.5"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#78350f">
+      <text x="66" y="171">word 0</text>
+      <text x="154" y="171">word 1</text>
+      <text x="286" y="171">word 99</text>
+      <text x="470" y="171">word 101</text>
+      <text x="602" y="171">word 1022</text>
+      <text x="692" y="171">word 1023</text>
+    </g>
+    <text x="378" y="171" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">word 100</text>
+    <text x="24" y="206" font-size="12" fill="#475569">Inside page 5 there are 1024 words: word 0 to word 1023.</text>
+  </g>
+
+  <g id="p5b-address">
+    <text x="24" y="256" font-size="15" font-weight="700" fill="#0f172a">address =</text>
+    <rect x="110" y="226" width="220" height="48" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="220" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">page number = 5</text>
+    <text x="220" y="264" text-anchor="middle" font-size="12" fill="#1e3a8a">which page</text>
+    <rect x="330" y="226" width="220" height="48" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="440" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">offset = 100</text>
+    <text x="440" y="264" text-anchor="middle" font-size="12" fill="#78350f">which word inside the page</text>
+  </g>
+</svg>
