@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 184" role="img" aria-labelledby="p2d-title p2d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p2d-title">Memory for 10 programs: 11 blocks of 512 kB</title>
+  <desc id="p2d-desc">Eleven blocks of 512 kB: one for the operating system and ten for programs. The first four blocks are the 2 MB that we have. The other seven blocks are the 3.5 MB that we must add. Together it is 5.5 MB.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="183" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Memory for 10 programs</text>
+
+  <rect x="24" y="52" width="60" height="50" rx="5" fill="#e2e8f0" stroke="#64748b"/>
+  <g fill="#dbeafe" stroke="#2563eb">
+    <rect x="89" y="52" width="60" height="50" rx="5"/>
+    <rect x="154" y="52" width="60" height="50" rx="5"/>
+    <rect x="219" y="52" width="60" height="50" rx="5"/>
+  </g>
+  <g fill="#93c5fd" stroke="#1d4ed8" stroke-width="2">
+    <rect x="284" y="52" width="60" height="50" rx="5"/>
+    <rect x="349" y="52" width="60" height="50" rx="5"/>
+    <rect x="414" y="52" width="60" height="50" rx="5"/>
+    <rect x="479" y="52" width="60" height="50" rx="5"/>
+    <rect x="544" y="52" width="60" height="50" rx="5"/>
+    <rect x="609" y="52" width="60" height="50" rx="5"/>
+    <rect x="674" y="52" width="60" height="50" rx="5"/>
+  </g>
+  <g text-anchor="middle" fill="#334155">
+    <text x="54" y="74" font-size="12" font-weight="700">OS</text>
+    <text x="54" y="91" font-size="10">512 kB</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">
+    <text x="119" y="74">P1</text>
+    <text x="184" y="74">P2</text>
+    <text x="249" y="74">P3</text>
+    <text x="314" y="74">P4</text>
+    <text x="379" y="74">P5</text>
+    <text x="444" y="74">P6</text>
+    <text x="509" y="74">P7</text>
+    <text x="574" y="74">P8</text>
+    <text x="639" y="74">P9</text>
+    <text x="704" y="74">P10</text>
+  </g>
+  <g text-anchor="middle" font-size="10" fill="#1e3a8a">
+    <text x="119" y="91">512 kB</text>
+    <text x="184" y="91">512 kB</text>
+    <text x="249" y="91">512 kB</text>
+    <text x="314" y="91">512 kB</text>
+    <text x="379" y="91">512 kB</text>
+    <text x="444" y="91">512 kB</text>
+    <text x="509" y="91">512 kB</text>
+    <text x="574" y="91">512 kB</text>
+    <text x="639" y="91">512 kB</text>
+    <text x="704" y="91">512 kB</text>
+  </g>
+
+  <path d="M24 110 V117 H279 V110" fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M284 110 V117 H734 V110" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="151.5" y="136" text-anchor="middle" font-size="13" fill="#334155">we have: 2 MB (4 blocks)</text>
+  <text x="509" y="136" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">we must add: 3.5 MB (7 blocks)</text>
+  <text x="24" y="166" font-size="12" fill="#475569">Together: 11 blocks × 512 kB = 5632 kB = 5.5 MB.</text>
+</svg>

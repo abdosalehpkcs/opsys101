@@ -208,6 +208,89 @@ size of memory  →  number of programs (n)  →  CPU utilization (1 − pⁿ)
 - Part (a) goes from left to right. We know the memory, and we look for the CPU utilization.
 - Part (b) goes from right to left. We know the CPU utilization (99%), and we look for the memory.
 
+### Solution, step by step
+
+#### Part (a)
+
+**Step 1 – Count the programs.** Look at the picture of the memory:
+
+```
+2 MB = 4 blocks  →  1 OS + 3 programs
+3 MB = 6 blocks  →  1 OS + 5 programs
+```
+
+**Step 2 – Find the CPU utilization.** We put n = 3 and n = 5 into the rule:
+
+| Memory | Programs (n) | Idle time (0.6ⁿ) | CPU utilization (1 − 0.6ⁿ) |
+|---|---|---|---|
+| 2 MB | 3 | 0.6³ = 0.216 = 21.6% | 78.4% |
+| 3 MB | 5 | 0.6⁵ = 0.07776 ≈ 7.8% | 92.2% |
+
+**Step 3 – Find the growth.** The question asks how much the CPU utilization grows. So we subtract the value before from the value after:
+
+```
+92.224 % − 78.4 % = 13.824 %  ≈  13.8 %
+```
+
+![Two bars. With 3 programs the CPU is busy 78.4% of the time. With 5 programs it is busy 92.2%. The growth is 13.8%.](images/problem2-utilization.svg)
+
+The lecture solution subtracts the idle times instead: 21.6% − 7.776% = 13.824%. It is the same number, because every percent that the CPU is not idle any more is a percent that it is busy.
+
+#### Part (b)
+
+**Step 1 – Write the goal.** We start from the goal and change it step by step, until only 0.6ⁿ is on one side:
+
+```
+CPU utilization ≥ 99 %      the goal
+1 − idle time   ≥ 0.99      the CPU is busy or idle, so utilization = 1 − idle time
+1 − 0.6ⁿ        ≥ 0.99      idle time = 0.6ⁿ (the rule from Problem 1)
+0.6ⁿ            ≤ 0.01      the CPU may be idle at most 1 % of the time
+```
+
+**Step 2 – Find n by trying numbers.** We add one program after another, until the CPU utilization is at least 99%:
+
+![A bar chart of the CPU utilization for 1 to 10 programs. With 9 programs it is 98.99%, a little too low. With 10 programs it is 99.4%, which is enough.](images/problem2-chart.svg)
+
+| Programs (n) | Idle (0.6ⁿ) | CPU utilization | At least 99%? |
+|---|---|---|---|
+| 8 | 1.680% | 98.320% | no |
+| 9 | 1.008% | 98.992% | no, a little too low |
+| **10** | **0.605%** | **99.395%** | **yes** |
+
+So we need n = 10 programs.
+
+**Step 3 – Find n with a logarithm (another way to the same result).** The unknown n is an exponent. A logarithm is the tool that finds an exponent: for example log(100) = 2, because 10² = 100 [10, §6.3].
+
+A calculator has two logarithm keys: `log` (base 10) and `ln` (base e ≈ 2.718) [10, §6.3]. Both give the same n here. We use `log`. The rule we need moves the exponent down: log(aⁿ) = n × log(a) [10, §6.5].
+
+```
+0.6ⁿ ≤ 0.01
+n × log(0.6) ≤ log(0.01)        take the logarithm of both sides; n comes down
+n × (−0.22185) ≤ −2             values from the calculator
+n ≥ 9.015…                      divide by a negative number: ≤ turns into ≥
+```
+
+With `ln` the result is the same: (−4.60517) ÷ (−0.51083) = 9.015…
+
+The number of programs must be a whole number, and it must be at least 9.015. So n = 10.
+
+**Step 4 – Change the programs back to memory.**
+
+```
+10 programs + 1 OS = 11 blocks
+11 × 512 kB = 5632 kB = 5.5 MB
+5.5 MB − 2 MB = 3.5 MB to add
+```
+
+![Eleven blocks of 512 kB: the OS and 10 programs. The first 4 blocks are the 2 MB we have. The other 7 blocks are the 3.5 MB we must add.](images/problem2-memory-99.svg)
+
+### Answer
+
+- **(a)** CPU utilization grows from 78.4% to 92.2%. This is **about 13.8%** more.
+- **(b)** We need 10 programs in memory, so 5.5 MB in total. We must add **3.5 MB** to the first computer (2 MB). If we start from the 3 MB computer of part (a), we must add 2.5 MB more.
+
+**What we learn.** The first extra 1 MB gave us 13.8% (from 78.4% to 92.2%). The next 2.5 MB give us only 7.2% (from 92.2% to 99.4%). More memory always helps, but every step helps less.
+
 ---
 
 ## References
