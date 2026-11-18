@@ -165,6 +165,51 @@ On average **6.25%** of the CPU time is not used. The CPU is busy 93.75% of the 
 
 ---
 
+## Problem 2 – Is It Worth Adding More Memory?
+
+*Topic: multiprogramming with fixed partitions, without swapping.*
+
+### The problem
+
+A computer has **2 MB** of memory. The operating system takes **512 kB**. Every running program also takes **512 kB**. All programs wait for I/O **60%** of the time.
+
+- **(a)** By how many percent does the throughput (CPU utilization) grow if we add **1 MB** of memory?
+- **(b)** How much memory must we add to bring the CPU utilization to **at least 99%**?
+
+### Understand the situation
+
+**1. Memory is cut into blocks of 512 kB.**
+
+The operating system takes one block. Every program takes one block. So the size of the memory decides how many programs can run.
+
+In this problem 1 MB = 1024 kB, so 1 MB is 2 blocks.
+
+![With 2 MB there are 4 blocks: 1 for the OS and 3 for programs. With 3 MB there are 6 blocks: 1 for the OS and 5 for programs.](images/problem2-memory.svg)
+
+**2. More programs means a busier CPU.**
+
+We know the rule from Problem 1: the CPU is idle only when all programs wait at the same moment.
+
+```
+idle time        = pⁿ
+CPU utilization  = 1 − pⁿ
+```
+
+Here p = 0.6, because a program waits 60% of the time. The letter n is the number of programs.
+
+**3. The two questions.**
+
+Everything in this problem follows one chain:
+
+```
+size of memory  →  number of programs (n)  →  CPU utilization (1 − pⁿ)
+```
+
+- Part (a) goes from left to right. We know the memory, and we look for the CPU utilization.
+- Part (b) goes from right to left. We know the CPU utilization (99%), and we look for the memory.
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [4 – The Abstraction: The Process](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [16 – Segmentation](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf), [17 – Free-Space Management](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [21 – Beyond Physical Memory: Mechanisms](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf).

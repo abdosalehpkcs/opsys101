@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 246" role="img" aria-labelledby="p2a-title p2a-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p2a-title">Memory before and after we add 1 MB</title>
+  <desc id="p2a-desc">With 2 MB the memory has 4 blocks of 512 kB: one for the operating system and three for programs. With 3 MB it has 6 blocks: one for the operating system and five for programs. The added 1 MB gives 2 more blocks, so 2 more programs.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="245" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Memory before and after we add 1 MB</text>
+
+  <g id="p2a-before">
+    <text x="24" y="83" font-size="15" font-weight="700" fill="#334155">2 MB</text>
+    <rect x="90" y="52" width="100" height="50" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+    <g fill="#dbeafe" stroke="#2563eb">
+      <rect x="196" y="52" width="100" height="50" rx="6"/>
+      <rect x="302" y="52" width="100" height="50" rx="6"/>
+      <rect x="408" y="52" width="100" height="50" rx="6"/>
+    </g>
+    <g text-anchor="middle" fill="#334155">
+      <text x="140" y="73" font-size="12" font-weight="700">OS</text>
+      <text x="140" y="90" font-size="11">512 kB</text>
+    </g>
+    <g text-anchor="middle" fill="#1e3a8a">
+      <text x="246" y="73" font-size="12" font-weight="700">Program 1</text>
+      <text x="246" y="90" font-size="11">512 kB</text>
+      <text x="352" y="73" font-size="12" font-weight="700">Program 2</text>
+      <text x="352" y="90" font-size="11">512 kB</text>
+      <text x="458" y="73" font-size="12" font-weight="700">Program 3</text>
+      <text x="458" y="90" font-size="11">512 kB</text>
+    </g>
+    <text x="90" y="120" font-size="12" fill="#475569">4 blocks: 1 for the OS, 3 for programs</text>
+  </g>
+
+  <g id="p2a-after">
+    <text x="24" y="191" font-size="15" font-weight="700" fill="#334155">3 MB</text>
+    <rect x="90" y="160" width="100" height="50" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+    <g fill="#dbeafe" stroke="#2563eb">
+      <rect x="196" y="160" width="100" height="50" rx="6"/>
+      <rect x="302" y="160" width="100" height="50" rx="6"/>
+      <rect x="408" y="160" width="100" height="50" rx="6"/>
+    </g>
+    <g fill="#93c5fd" stroke="#1d4ed8" stroke-width="2">
+      <rect x="514" y="160" width="100" height="50" rx="6"/>
+      <rect x="620" y="160" width="100" height="50" rx="6"/>
+    </g>
+    <g text-anchor="middle" fill="#334155">
+      <text x="140" y="181" font-size="12" font-weight="700">OS</text>
+      <text x="140" y="198" font-size="11">512 kB</text>
+    </g>
+    <g text-anchor="middle" fill="#1e3a8a">
+      <text x="246" y="181" font-size="12" font-weight="700">Program 1</text>
+      <text x="246" y="198" font-size="11">512 kB</text>
+      <text x="352" y="181" font-size="12" font-weight="700">Program 2</text>
+      <text x="352" y="198" font-size="11">512 kB</text>
+      <text x="458" y="181" font-size="12" font-weight="700">Program 3</text>
+      <text x="458" y="198" font-size="11">512 kB</text>
+      <text x="564" y="181" font-size="12" font-weight="700">Program 4</text>
+      <text x="564" y="198" font-size="11">512 kB</text>
+      <text x="670" y="181" font-size="12" font-weight="700">Program 5</text>
+      <text x="670" y="198" font-size="11">512 kB</text>
+    </g>
+    <path d="M514 154 V148 H720 V154" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="617" y="141" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">added: 1 MB = 2 blocks</text>
+    <text x="90" y="228" font-size="12" fill="#475569">6 blocks: 1 for the OS, 5 for programs</text>
+  </g>
+</svg>
