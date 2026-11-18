@@ -89,6 +89,37 @@ With **b** bits we can number 2ᵇ different things. This rule is all we need fo
 
 ---
 
+## Problem 1 – How Often Is the CPU Idle?
+
+*Topic: multiprogramming with fixed partitions, without swapping.*
+
+### The problem
+
+A computer system has room in its main memory for **four programs**. On average, each program waits for I/O **50%** of the time. On average, what part of the CPU time is **not used**?
+
+### Understand the situation
+
+**1. A program does two things, again and again.**
+
+- It **computes**. For this it needs the CPU.
+- It **waits for I/O**. For this it does not need the CPU.
+
+In this problem a program waits half of the time.
+
+![A time line of one program. Green blocks: the program computes and needs the CPU. Orange blocks: the program waits for I/O and does not need the CPU. Half of the time each.](images/problem1-one-program.svg)
+
+**2. Four programs share one CPU.**
+
+All four programs stay in memory, also when they wait (there is no swapping). When one program waits, the CPU works for another program. So the CPU is idle only when **all four programs wait at the same moment**.
+
+![Moment 1: program 2 computes and the other three wait, so the CPU is busy. Moment 2: all four programs wait, so the CPU is idle.](images/problem1-two-moments.svg)
+
+**3. The question.**
+
+For what part of the time do all four programs wait at the same moment?
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [4 – The Abstraction: The Process](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [16 – Segmentation](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf), [17 – Free-Space Management](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [21 – Beyond Physical Memory: Mechanisms](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf).

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 240" role="img" aria-labelledby="p1b-title p1b-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p1b-title">Two moments: the CPU is busy when one program computes, and idle when all four wait</title>
+  <desc id="p1b-desc">Moment 1: programs 1, 3 and 4 wait, and program 2 computes. The CPU is busy, it runs program 2. Moment 2: all four programs wait. The CPU is idle, it has nothing to do.</desc>
+  <defs>
+    <marker id="p1b-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="239" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Two moments: four programs in memory, one CPU</text>
+
+  <g id="p1b-moment1">
+    <text x="24" y="84" font-size="13" font-weight="700" fill="#334155">Moment 1</text>
+    <g fill="#fed7aa" stroke="#ea580c">
+      <rect x="104" y="52" width="110" height="54" rx="6"/>
+      <rect x="340" y="52" width="110" height="54" rx="6"/>
+      <rect x="458" y="52" width="110" height="54" rx="6"/>
+    </g>
+    <rect x="222" y="52" width="110" height="54" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <g text-anchor="middle" fill="#7c2d12">
+      <text x="159" y="74" font-size="12">Program 1</text>
+      <text x="159" y="93" font-size="13" font-weight="700">waits</text>
+      <text x="395" y="74" font-size="12">Program 3</text>
+      <text x="395" y="93" font-size="13" font-weight="700">waits</text>
+      <text x="513" y="74" font-size="12">Program 4</text>
+      <text x="513" y="93" font-size="13" font-weight="700">waits</text>
+    </g>
+    <g text-anchor="middle" fill="#14532d">
+      <text x="277" y="74" font-size="12">Program 2</text>
+      <text x="277" y="93" font-size="13" font-weight="700">computes</text>
+    </g>
+    <line x1="574" y1="79" x2="616" y2="79" stroke="#64748b" stroke-width="2" marker-end="url(#p1b-arrow)"/>
+    <rect x="620" y="52" width="116" height="54" rx="6" fill="#16a34a"/>
+    <text x="678" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">CPU busy</text>
+    <text x="678" y="93" text-anchor="middle" font-size="11" fill="#ffffff">runs program 2</text>
+    <text x="104" y="124" font-size="12" fill="#475569">Program 2 computes, so the CPU has work.</text>
+  </g>
+
+  <g id="p1b-moment2">
+    <text x="24" y="182" font-size="13" font-weight="700" fill="#334155">Moment 2</text>
+    <g fill="#fed7aa" stroke="#ea580c">
+      <rect x="104" y="150" width="110" height="54" rx="6"/>
+      <rect x="222" y="150" width="110" height="54" rx="6"/>
+      <rect x="340" y="150" width="110" height="54" rx="6"/>
+      <rect x="458" y="150" width="110" height="54" rx="6"/>
+    </g>
+    <g text-anchor="middle" fill="#7c2d12">
+      <text x="159" y="172" font-size="12">Program 1</text>
+      <text x="159" y="191" font-size="13" font-weight="700">waits</text>
+      <text x="277" y="172" font-size="12">Program 2</text>
+      <text x="277" y="191" font-size="13" font-weight="700">waits</text>
+      <text x="395" y="172" font-size="12">Program 3</text>
+      <text x="395" y="191" font-size="13" font-weight="700">waits</text>
+      <text x="513" y="172" font-size="12">Program 4</text>
+      <text x="513" y="191" font-size="13" font-weight="700">waits</text>
+    </g>
+    <line x1="574" y1="177" x2="616" y2="177" stroke="#64748b" stroke-width="2" marker-end="url(#p1b-arrow)"/>
+    <rect x="620" y="150" width="116" height="54" rx="6" fill="#ea580c"/>
+    <text x="678" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">CPU idle</text>
+    <text x="678" y="191" text-anchor="middle" font-size="11" fill="#ffffff">nothing to do</text>
+    <text x="104" y="222" font-size="12" fill="#475569">All four programs wait, so the CPU has nothing to do.</text>
+  </g>
+</svg>

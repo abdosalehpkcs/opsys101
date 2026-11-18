@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 152" role="img" aria-labelledby="p1a-title p1a-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p1a-title">One program: it computes, then it waits for I/O, again and again</title>
+  <desc id="p1a-desc">A time line of one program. Green blocks show the time when the program computes and needs the CPU. Orange blocks show the time when the program waits for I/O and does not need the CPU. The green blocks and the orange blocks have the same total length: half of the time each.</desc>
+  <defs>
+    <marker id="p1a-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="151" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">One program: it computes, then it waits for I/O, again and again</text>
+
+  <g fill="#86efac" stroke="#16a34a">
+    <rect x="24" y="50" width="90" height="48" rx="3"/>
+    <rect x="244" y="50" width="150" height="48" rx="3"/>
+    <rect x="494" y="50" width="116" height="48" rx="3"/>
+  </g>
+  <g fill="#fed7aa" stroke="#ea580c">
+    <rect x="114" y="50" width="130" height="48" rx="3"/>
+    <rect x="394" y="50" width="100" height="48" rx="3"/>
+    <rect x="610" y="50" width="126" height="48" rx="3"/>
+  </g>
+  <g text-anchor="middle" fill="#14532d">
+    <text x="69" y="71" font-size="12" font-weight="700">computes</text>
+    <text x="69" y="88" font-size="11">needs the CPU</text>
+    <text x="319" y="71" font-size="12" font-weight="700">computes</text>
+    <text x="319" y="88" font-size="11">needs the CPU</text>
+    <text x="552" y="71" font-size="12" font-weight="700">computes</text>
+    <text x="552" y="88" font-size="11">needs the CPU</text>
+  </g>
+  <g text-anchor="middle" fill="#7c2d12">
+    <text x="179" y="71" font-size="12" font-weight="700">waits for I/O</text>
+    <text x="179" y="88" font-size="11">no CPU needed</text>
+    <text x="444" y="71" font-size="12" font-weight="700">waits for I/O</text>
+    <text x="444" y="88" font-size="11">no CPU needed</text>
+    <text x="673" y="71" font-size="12" font-weight="700">waits for I/O</text>
+    <text x="673" y="88" font-size="11">no CPU needed</text>
+  </g>
+
+  <line x1="24" y1="114" x2="734" y2="114" stroke="#64748b" stroke-width="1.5" marker-end="url(#p1a-arrow)"/>
+  <text x="736" y="134" text-anchor="end" font-size="12" fill="#475569">time</text>
+  <text x="24" y="134" font-size="12" fill="#475569">Half of the time the program computes. Half of the time it waits.</text>
+</svg>
