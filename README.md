@@ -388,6 +388,41 @@ T ≥ 3.57 s
 
 ---
 
+## Problem 4 – How Much Do Page Faults Slow a Program Down?
+
+*Topic: virtual memory with paging.*
+
+### The problem
+
+One instruction takes **1 µs**. If the instruction uses a page that is not in memory (a page fault), it takes **n µs more**. What is the effective (average) time of one instruction, if a page fault happens on average once every **k instructions**?
+
+### Understand the situation
+
+**1. Where are the pages?**
+
+With virtual memory, not all pages of a program are in main memory. Some of them are on disk.
+
+![A program with six pages. Pages 0 to 3 are in main memory, which is fast. Pages 4 and 5 are on disk, which is slow.](images/problem4-pages.svg)
+
+**2. There are two kinds of instructions.**
+
+- Most instructions use pages that are in memory. These instructions are fast: 1 µs.
+- Sometimes an instruction needs a page that is on disk. This is a page fault. The OS must read the page from disk, and the instruction must wait. This extra waiting time is **n µs**. A disk is much slower than memory, so n is a big number.
+
+![A normal instruction finds its page in main memory and takes 1 µs. An instruction with a page fault must wait until the OS reads the page from disk, so it takes 1 + n µs.](images/problem4-two-cases.svg)
+
+**3. What does a run of the program look like?**
+
+The program runs many fast instructions. From time to time one instruction has a page fault, and the program waits. The problem says that this happens once every k instructions.
+
+![A time line with k short blocks, one for each instruction of 1 µs, and one long block for the page fault of n µs.](images/problem4-timeline.svg)
+
+**4. What kind of answer do we look for?**
+
+The problem gives letters, not numbers. So the answer is a **formula**, not a number.
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [4 – The Abstraction: The Process](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [16 – Segmentation](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf), [17 – Free-Space Management](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [21 – Beyond Physical Memory: Mechanisms](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf).

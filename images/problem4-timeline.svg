@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 196" role="img" aria-labelledby="p4c-title p4c-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p4c-title">Timeline of k instructions with one page fault</title>
+  <desc id="p4c-desc">A time line. First there are k short blocks, one for each instruction, 1 microsecond each. Then there is one long block for the page fault, which takes n microseconds more. The picture is not to scale.</desc>
+  <defs>
+    <marker id="p4c-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="195" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">One group of k instructions, with one page fault</text>
+
+  <g id="p4c-instructions" fill="#86efac" stroke="#16a34a">
+    <rect x="24" y="52" width="24" height="44" rx="3"/>
+    <rect x="52" y="52" width="24" height="44" rx="3"/>
+    <rect x="80" y="52" width="24" height="44" rx="3"/>
+    <rect x="108" y="52" width="24" height="44" rx="3"/>
+    <rect x="136" y="52" width="24" height="44" rx="3"/>
+    <rect x="164" y="52" width="24" height="44" rx="3"/>
+    <rect x="224" y="52" width="24" height="44" rx="3"/>
+    <rect x="252" y="52" width="24" height="44" rx="3"/>
+    <rect x="280" y="52" width="24" height="44" rx="3"/>
+  </g>
+  <g fill="#16a34a">
+    <circle cx="198" cy="74" r="2.5"/>
+    <circle cx="206" cy="74" r="2.5"/>
+    <circle cx="214" cy="74" r="2.5"/>
+  </g>
+
+  <g id="p4c-fault">
+    <rect x="308" y="52" width="428" height="44" rx="3" fill="#fed7aa" stroke="#ea580c"/>
+    <text x="522" y="79" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">page fault: the instruction waits for the disk</text>
+  </g>
+
+  <g id="p4c-brackets" fill="none" stroke-width="1.5">
+    <path d="M24 104 V112 H304 V104" stroke="#16a34a"/>
+    <path d="M308 104 V112 H736 V104" stroke="#ea580c"/>
+  </g>
+  <text x="164" y="132" text-anchor="middle" font-size="13" fill="#14532d">k instructions, 1 µs each</text>
+  <text x="522" y="132" text-anchor="middle" font-size="13" fill="#7c2d12">n µs more</text>
+
+  <line x1="24" y1="154" x2="734" y2="154" stroke="#64748b" stroke-width="1.5" marker-end="url(#p4c-arrow)"/>
+  <text x="736" y="174" text-anchor="end" font-size="12" fill="#475569">time</text>
+  <text x="24" y="174" font-size="12" fill="#475569">Not to scale: one page fault takes much longer than one instruction.</text>
+</svg>
