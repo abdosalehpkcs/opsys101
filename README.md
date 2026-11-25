@@ -45,24 +45,29 @@ Read these terms first.
 - **32-bit address space** – every address has 32 bits. So a process can use 2³² different addresses [1, §18.2].
 - **Page table entry** – one line of the page table. It holds the frame number of one page [1, §18.3]. The page table has one entry for every page.
 - **Process switch** (also called *context switch*) – the OS stops running one process and starts running another one [1, §6.3].
+- **Two-level page table** – a page table that is cut into many small page tables. A small page table exists only for a part of the address space that the process uses [1, §20.3].
+- **Page directory** – the table of the first level. Each of its entries says where one small page table is, or that this page table does not exist [1, §20.3].
+- **Overhead** – here: the memory that the page tables themselves take. This memory is not free for programs [1, ch. 20].
 
 ### Units
 
 | Unit | Meaning in this lab |
 |------|---------------------|
 | 1 kB | 1024 bytes = 2¹⁰ bytes |
+| 1 MB | 1024 kB = 2²⁰ bytes |
+| 1 GB | 1024 MB = 2³⁰ bytes |
 | 1 ms (millisecond) | 0.001 s |
 | 1 ns (nanosecond) | 0.000 000 001 s, so 1 ms = 1 000 000 ns |
 
-Be careful with **kB**. In the official standard, 1 kB is 1000 bytes, and the name for 1024 bytes is *kibibyte* (KiB) [2], [3]. Our problems write kB for 1024 bytes.
+Be careful with **kB**, **MB** and **GB**. In the official standard, 1 kB is 1000 bytes, and the name for 1024 bytes is *kibibyte* (KiB) [2], [3]. Our problems use the steps of 1024.
 
 ### Powers of two
 
 With **b** bits we can write 2ᵇ different numbers.
 
-| Bits | 10 | 13 | 19 | 32 |
-|------|----|----|----|----|
-| Different numbers | 1024 | 8192 | 524 288 | 4 294 967 296 |
+| Bits | 9 | 10 | 11 | 12 | 13 | 19 | 20 | 32 |
+|------|---|----|----|----|----|----|----|----|
+| Different numbers | 512 | 1024 | 2048 | 4096 | 8192 | 524 288 | 1 048 576 | 4 294 967 296 |
 
 ---
 
@@ -146,6 +151,50 @@ Loading page tables uses about **52%** of the CPU time. For more than half of th
 
 ---
 
+## Problem 7 – How Does a Two-Level Page Table Split an Address?
+
+*Topic: virtual memory with paging, two-level page tables.*
+
+### The problem
+
+A computer with **32-bit** addresses uses a **two-level page table** (as, for example, the Intel 80386). An address has three parts:
+
+```
+| 9 bits | 11 bits | offset |
+```
+
+- **(a)** How large are the pages, and how many pages are in the virtual address space of one process?
+- **(b)** What part of the address space can be addressed with one entry of the page directory? What overhead belongs to it?
+- **(c)** What is the overhead for the whole address space? What would it be with a one-level page table?
+
+### Understand the situation
+
+**1. One long page table wastes memory.**
+
+A one-level page table has an entry for every page of the address space, also for the pages that the process never uses. In Problem 6 this was 524 288 entries for every process. Such tables take far too much memory [1, ch. 20].
+
+**2. The idea: cut the page table into small page tables.**
+
+- Each small **page table** holds the entries for one part of the address space.
+- A new table, the **page directory**, says where each small page table is [1, §20.3].
+- If the process does not use a part of the address space, this part gets no page table. Its entry in the page directory stays empty.
+
+![The page directory on the left. Entry 0, entry 2 and the last entry point to page tables, and each page table points to its pages. Entry 1 is empty, so this part has no page table.](images/problem7-two-levels.svg)
+
+**3. The address has three parts.**
+
+> **Hint:** With one level, the hardware looks into one table, so the address needs one number for it. With two levels, the hardware looks into two tables, one after the other. So the address needs two numbers, and then the offset.
+
+![A 32-bit address with three parts. The 9 bits choose an entry of the page directory. The 11 bits choose an entry of a page table. The offset chooses a byte inside the page.](images/problem7-address.svg)
+
+**4. The three questions.**
+
+- Part (a) asks about sizes: how large is a page, and how many pages are there?
+- Part (b) looks at **one** entry of the page directory: how much memory does it cover, and how much memory do the tables for it take?
+- Part (c) asks the same for the **whole** address space, and compares it with one level.
+
+---
+
 ## Summary
 
 | Problem | Main idea | Formula | Result |
@@ -154,7 +203,7 @@ Loading page tables uses about **52%** of the CPU time. For more than half of th
 
 ## References
 
-1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [6 – Mechanism: Limited Direct Execution](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [19 – Paging: Faster Translations (TLBs)](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf).
+1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [6 – Mechanism: Limited Direct Execution](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [19 – Paging: Faster Translations (TLBs)](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf), [20 – Paging: Smaller Tables](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf).
 2. National Institute of Standards and Technology (NIST). *Prefixes for binary multiples*. <https://physics.nist.gov/cuu/Units/binary.html>.
 3. National Institute of Standards and Technology (NIST). *Metric (SI) Prefixes*. <https://www.nist.gov/pml/owm/metric-si-prefixes>.
 4. Course slides: *Operačné systémy – Teoretické cvičenia V. Správa pamäti. Algoritmy prideľovania pamäti v multiprocesových systémoch.* The problems and the solution methods in this lab come from these slides and their speaker notes.

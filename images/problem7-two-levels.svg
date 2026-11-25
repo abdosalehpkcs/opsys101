@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 346" role="img" aria-labelledby="p7a-title p7a-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p7a-title">Two levels: one page directory and many small page tables</title>
+  <desc id="p7a-desc">On the left, the page directory with its entries. Entry 0 points to page table 0, entry 2 points to page table 2, and the last entry points to the last page table. Each page table points to the pages of its part of the address space. Entry 1 is empty: this part of the address space is not used, so it has no page table.</desc>
+  <defs>
+    <marker id="p7a-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="345" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Two levels: one page directory and many small page tables</text>
+
+  <g id="p7a-directory">
+    <rect x="24" y="52" width="180" height="222" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="114" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">Page directory</text>
+    <text x="114" y="92" text-anchor="middle" font-size="11" fill="#475569">first level</text>
+    <g fill="#ccfbf1" stroke="#0d9488">
+      <rect x="44" y="102" width="140" height="28"/>
+      <rect x="44" y="166" width="140" height="28"/>
+      <rect x="44" y="232" width="140" height="28"/>
+    </g>
+    <rect x="44" y="134" width="140" height="28" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 3"/>
+    <g font-size="12" text-anchor="middle" fill="#134e4a">
+      <text x="114" y="121">entry 0</text>
+      <text x="114" y="185">entry 2</text>
+      <text x="114" y="251">last entry</text>
+    </g>
+    <text x="114" y="153" text-anchor="middle" font-size="12" fill="#64748b">entry 1: empty</text>
+    <g fill="#0d9488">
+      <circle cx="114" cy="205" r="2.5"/>
+      <circle cx="114" cy="213" r="2.5"/>
+      <circle cx="114" cy="221" r="2.5"/>
+    </g>
+  </g>
+
+  <g id="p7a-tables">
+    <text x="385" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Page tables (second level)</text>
+    <g fill="#dbeafe" stroke="#2563eb" stroke-width="1.5">
+      <rect x="300" y="60" width="170" height="54" rx="8"/>
+      <rect x="300" y="184" width="170" height="54" rx="8"/>
+      <rect x="300" y="250" width="170" height="54" rx="8"/>
+    </g>
+    <rect x="300" y="124" width="170" height="50" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <g text-anchor="middle" fill="#1e3a8a">
+      <text x="385" y="82" font-size="12" font-weight="700">page table 0</text>
+      <text x="385" y="100" font-size="11">one entry for each page</text>
+      <text x="385" y="206" font-size="12" font-weight="700">page table 2</text>
+      <text x="385" y="224" font-size="11">one entry for each page</text>
+      <text x="385" y="272" font-size="12" font-weight="700">last page table</text>
+      <text x="385" y="290" font-size="11">one entry for each page</text>
+    </g>
+    <text x="385" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">no page table</text>
+    <text x="385" y="162" text-anchor="middle" font-size="11" fill="#64748b">this part is not used</text>
+  </g>
+
+  <g id="p7a-pages">
+    <text x="648" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Pages in memory</text>
+    <g fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5">
+      <rect x="560" y="60" width="176" height="54" rx="8"/>
+      <rect x="560" y="184" width="176" height="54" rx="8"/>
+      <rect x="560" y="250" width="176" height="54" rx="8"/>
+    </g>
+    <g text-anchor="middle" fill="#4c1d95">
+      <text x="648" y="82" font-size="12" font-weight="700">the pages of part 0</text>
+      <text x="648" y="100" font-size="11">stored in frames</text>
+      <text x="648" y="206" font-size="12" font-weight="700">the pages of part 2</text>
+      <text x="648" y="224" font-size="11">stored in frames</text>
+      <text x="648" y="272" font-size="12" font-weight="700">the pages of the last part</text>
+      <text x="648" y="290" font-size="11">stored in frames</text>
+    </g>
+  </g>
+
+  <g stroke="#64748b" stroke-width="2" fill="none">
+    <line x1="184" y1="116" x2="296" y2="88" marker-end="url(#p7a-arrow)"/>
+    <line x1="184" y1="180" x2="296" y2="210" marker-end="url(#p7a-arrow)"/>
+    <line x1="184" y1="246" x2="296" y2="276" marker-end="url(#p7a-arrow)"/>
+    <line x1="470" y1="87" x2="556" y2="87" marker-end="url(#p7a-arrow)"/>
+    <line x1="470" y1="211" x2="556" y2="211" marker-end="url(#p7a-arrow)"/>
+    <line x1="470" y1="277" x2="556" y2="277" marker-end="url(#p7a-arrow)"/>
+  </g>
+  <line x1="184" y1="148" x2="298" y2="149" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+  <text x="24" y="326" font-size="12" fill="#475569">A part of the address space that is not used needs no page table. This saves memory.</text>
+</svg>
