@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 296" role="img" aria-labelledby="p8a-title p8a-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p8a-title">More frames: more pages of the program are in main memory</title>
+  <desc id="p8a-desc">A program with 8 pages. With 2 frames, pages 0 and 1 are in main memory and the other 6 pages are on disk. With 4 frames, twice as many, pages 0 to 3 are in main memory and only 4 pages are on disk.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="295" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">More frames: more pages of the program are in main memory</text>
+
+  <g id="p8a-few">
+    <text x="24" y="62" font-size="13" font-weight="700" fill="#334155">The program has 2 frames</text>
+    <rect x="24" y="70" width="330" height="72" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="36" y="89" font-size="12" font-weight="700" fill="#14532d">Main memory: 2 pages</text>
+    <g fill="#dcfce7" stroke="#16a34a">
+      <rect x="36" y="98" width="64" height="32" rx="5"/>
+      <rect x="106" y="98" width="64" height="32" rx="5"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#14532d">
+      <text x="68" y="119">page 0</text>
+      <text x="138" y="119">page 1</text>
+    </g>
+    <rect x="380" y="70" width="356" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="7 4"/>
+    <text x="392" y="89" font-size="12" font-weight="700" fill="#7c2d12">Disk: 6 pages</text>
+    <g fill="#ffedd5" stroke="#ea580c">
+      <rect x="392" y="98" width="52" height="32" rx="5"/>
+      <rect x="448" y="98" width="52" height="32" rx="5"/>
+      <rect x="504" y="98" width="52" height="32" rx="5"/>
+      <rect x="560" y="98" width="52" height="32" rx="5"/>
+      <rect x="616" y="98" width="52" height="32" rx="5"/>
+      <rect x="672" y="98" width="52" height="32" rx="5"/>
+    </g>
+    <g font-size="11" text-anchor="middle" fill="#7c2d12">
+      <text x="418" y="118">page 2</text>
+      <text x="474" y="118">page 3</text>
+      <text x="530" y="118">page 4</text>
+      <text x="586" y="118">page 5</text>
+      <text x="642" y="118">page 6</text>
+      <text x="698" y="118">page 7</text>
+    </g>
+  </g>
+
+  <g id="p8a-more">
+    <text x="24" y="172" font-size="13" font-weight="700" fill="#334155">The program has 4 frames (twice as many)</text>
+    <rect x="24" y="180" width="330" height="72" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="36" y="199" font-size="12" font-weight="700" fill="#14532d">Main memory: 4 pages</text>
+    <g fill="#dcfce7" stroke="#16a34a">
+      <rect x="36" y="208" width="64" height="32" rx="5"/>
+      <rect x="106" y="208" width="64" height="32" rx="5"/>
+      <rect x="176" y="208" width="64" height="32" rx="5"/>
+      <rect x="246" y="208" width="64" height="32" rx="5"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#14532d">
+      <text x="68" y="229">page 0</text>
+      <text x="138" y="229">page 1</text>
+      <text x="208" y="229">page 2</text>
+      <text x="278" y="229">page 3</text>
+    </g>
+    <rect x="380" y="180" width="356" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="7 4"/>
+    <text x="392" y="199" font-size="12" font-weight="700" fill="#7c2d12">Disk: 4 pages</text>
+    <g fill="#ffedd5" stroke="#ea580c">
+      <rect x="392" y="208" width="52" height="32" rx="5"/>
+      <rect x="448" y="208" width="52" height="32" rx="5"/>
+      <rect x="504" y="208" width="52" height="32" rx="5"/>
+      <rect x="560" y="208" width="52" height="32" rx="5"/>
+    </g>
+    <g font-size="11" text-anchor="middle" fill="#7c2d12">
+      <text x="418" y="228">page 4</text>
+      <text x="474" y="228">page 5</text>
+      <text x="530" y="228">page 6</text>
+      <text x="586" y="228">page 7</text>
+    </g>
+  </g>
+
+  <text x="24" y="276" font-size="12" fill="#475569">A page in main memory causes no page fault. So more frames mean fewer page faults.</text>
+</svg>
