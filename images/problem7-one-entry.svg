@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 266" role="img" aria-labelledby="p7d-title p7d-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p7d-title">One entry of the page directory covers 8 MB</title>
+  <desc id="p7d-desc">One entry of the page directory points to one page table. One page table has 2048 entries, so it covers 2048 pages. 2048 pages of 4 kB are 8192 kB, which is 8 MB. The whole address space of 4 GB has 512 such parts of 8 MB, so one entry covers 1 of 512 parts.</desc>
+  <defs>
+    <marker id="p7d-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="265" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">One entry of the page directory covers 8 MB</text>
+
+  <g id="p7d-chain">
+    <rect x="24" y="52" width="200" height="56" rx="8" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="124" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">1 entry</text>
+    <text x="124" y="93" text-anchor="middle" font-size="12" fill="#134e4a">of the page directory</text>
+
+    <line x1="224" y1="80" x2="258" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#p7d-arrow)"/>
+
+    <rect x="262" y="52" width="200" height="56" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="362" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">1 page table</text>
+    <text x="362" y="93" text-anchor="middle" font-size="12" fill="#1e3a8a">2048 entries</text>
+
+    <line x1="462" y1="80" x2="496" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#p7d-arrow)"/>
+
+    <rect x="500" y="52" width="236" height="56" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="618" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">2048 pages</text>
+    <text x="618" y="93" text-anchor="middle" font-size="12" fill="#4c1d95">2048 × 4 kB = 8192 kB = 8 MB</text>
+  </g>
+
+  <g id="p7d-space">
+    <text x="24" y="140" font-size="13" font-weight="700" fill="#334155">The whole address space: 4 GB</text>
+    <rect x="24" y="150" width="112" height="40" rx="4" fill="#5eead4" stroke="#0d9488" stroke-width="2"/>
+    <g fill="#f1f5f9" stroke="#94a3b8">
+      <rect x="140" y="150" width="112" height="40" rx="4"/>
+      <rect x="256" y="150" width="112" height="40" rx="4"/>
+      <rect x="508" y="150" width="112" height="40" rx="4"/>
+      <rect x="624" y="150" width="112" height="40" rx="4"/>
+    </g>
+    <text x="80" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">8 MB</text>
+    <g font-size="12" text-anchor="middle" fill="#475569">
+      <text x="196" y="175">8 MB</text>
+      <text x="312" y="175">8 MB</text>
+      <text x="564" y="175">8 MB</text>
+      <text x="680" y="175">8 MB</text>
+    </g>
+    <g fill="#94a3b8">
+      <circle cx="426" cy="170" r="2.5"/>
+      <circle cx="438" cy="170" r="2.5"/>
+      <circle cx="450" cy="170" r="2.5"/>
+    </g>
+    <path d="M24 196 V203 H736 V196" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    <text x="380" y="222" text-anchor="middle" font-size="12" fill="#334155">512 parts of 8 MB each = 4096 MB = 4 GB</text>
+    <text x="24" y="246" font-size="12" fill="#475569">One entry covers 1 of the 512 parts: 1/512 of the address space. The picture is not to scale.</text>
+  </g>
+</svg>

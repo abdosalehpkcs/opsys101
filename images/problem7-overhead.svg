@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 262" role="img" aria-labelledby="p7e-title p7e-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p7e-title">Memory for the tables: two levels and one level</title>
+  <desc id="p7e-desc">Two comparisons. When the process uses only 8 MB, a two-level page table takes 10 kB and a one-level page table takes 4096 kB. When the process uses the whole 4 GB, a two-level page table takes 4098 kB and a one-level page table takes 4096 kB.</desc>
+
+  <rect x="0.5" y="0.5" width="759" height="261" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">Memory for the tables: two levels and one level</text>
+
+  <g id="p7e-small">
+    <text x="24" y="62" font-size="13" font-weight="700" fill="#334155">The process uses only 8 MB</text>
+    <text x="24" y="88" font-size="12" fill="#334155">two levels</text>
+    <rect x="110" y="72" width="4" height="24" rx="1" fill="#5eead4" stroke="#0d9488"/>
+    <text x="124" y="89" font-size="12" font-weight="700" fill="#134e4a">10 kB</text>
+    <text x="170" y="89" font-size="12" fill="#475569">= 2 kB for the page directory + 8 kB for one page table</text>
+    <text x="24" y="118" font-size="12" fill="#334155">one level</text>
+    <rect x="110" y="102" width="500" height="24" rx="3" fill="#bfdbfe" stroke="#2563eb"/>
+    <text x="622" y="119" font-size="12" font-weight="700" fill="#1e3a8a">4096 kB</text>
+  </g>
+
+  <g id="p7e-whole">
+    <text x="24" y="158" font-size="13" font-weight="700" fill="#334155">The process uses the whole 4 GB</text>
+    <text x="24" y="184" font-size="12" fill="#334155">two levels</text>
+    <rect x="110" y="168" width="500.24" height="24" rx="3" fill="#5eead4" stroke="#0d9488"/>
+    <text x="622" y="185" font-size="12" font-weight="700" fill="#134e4a">4098 kB</text>
+    <text x="24" y="214" font-size="12" fill="#334155">one level</text>
+    <rect x="110" y="198" width="500" height="24" rx="3" fill="#bfdbfe" stroke="#2563eb"/>
+    <text x="622" y="215" font-size="12" font-weight="700" fill="#1e3a8a">4096 kB</text>
+  </g>
+
+  <text x="24" y="244" font-size="12" fill="#475569">Two levels save memory when the process uses only a small part of its address space.</text>
+</svg>

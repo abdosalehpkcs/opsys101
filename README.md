@@ -193,6 +193,95 @@ A one-level page table has an entry for every page of the address space, also fo
 - Part (b) looks at **one** entry of the page directory: how much memory does it cover, and how much memory do the tables for it take?
 - Part (c) asks the same for the **whole** address space, and compares it with one level.
 
+### Solution, step by step
+
+#### Part (a)
+
+**Step 1 – Find the size of a page.** The three parts together have 32 bits. So we know the bits of the offset:
+
+```
+offset = 32 − 9 − 11 = 12 bits
+page size = 2¹² bytes = 4096 bytes = 4 kB
+```
+
+**Step 2 – Count the pages.** Each part of the address chooses one of 2ᵇ things:
+
+| Part of the address | Bits | It chooses one of |
+|---|---|---|
+| First part | 9 | 2⁹ = 512 entries of the page directory, so 512 page tables |
+| Second part | 11 | 2¹¹ = 2048 entries of one page table, so 2048 pages |
+
+```
+512 page tables × 2048 pages = 1 048 576 pages = 2²⁰ pages
+```
+
+![The address as 32 boxes: 9 bits for the page directory, 11 bits for the page table, 12 bits for the offset. The first 20 bits together are the page number.](images/problem7-bits.svg)
+
+#### Part (b)
+
+**Step 1 – What does one entry of the page directory cover?** One entry points to one page table. One page table has 2048 entries, so it covers 2048 pages:
+
+```
+2048 pages × 4 kB = 8192 kB = 8 MB
+```
+
+The whole address space has 2³² bytes = 4 GB = 4096 MB. So one entry covers:
+
+```
+8 MB ÷ 4096 MB = 1/512 of the address space
+```
+
+![One entry of the page directory points to one page table with 2048 entries, which covers 2048 pages, or 8 MB. The address space of 4 GB has 512 such parts.](images/problem7-one-entry.svg)
+
+**Step 2 – Find the overhead.** To use these 8 MB, two tables must be in memory. Every entry holds an address, and an address has 32 bits. So one entry takes 4 bytes:
+
+```
+one page table:       2048 entries × 4 bytes = 8192 bytes = 8 kB
+the page directory:    512 entries × 4 bytes = 2048 bytes = 2 kB
+
+together: 8 kB + 2 kB = 10 kB
+```
+
+This is about 0.1% of the 8 MB that the tables describe.
+
+#### Part (c)
+
+**Step 1 – Two levels, the whole address space.** Now all 512 page tables must exist:
+
+```
+512 page tables × 8 kB = 4096 kB
+the page directory     =    2 kB
+
+together: 4098 kB  ≈  4 MB
+```
+
+**Step 2 – One level, the whole address space.** A one-level page table has one entry for each of the 2²⁰ pages:
+
+```
+1 048 576 entries × 4 bytes = 4 194 304 bytes = 4096 kB = 4 MB
+```
+
+**Step 3 – Compare.** A one-level page table must always be complete, because the entry for page n is at place n of the table [1, §18.3]. So it takes 4096 kB, also for a small process.
+
+| The process uses | Two levels | One level |
+|---|---|---|
+| 8 MB (one entry of the page directory) | 10 kB | 4096 kB |
+| the whole 4 GB | 4098 kB | 4096 kB |
+
+![Two comparisons. A process that uses 8 MB needs 10 kB of tables with two levels and 4096 kB with one level. A process that uses the whole 4 GB needs 4098 kB with two levels and 4096 kB with one level.](images/problem7-overhead.svg)
+
+### Answer
+
+- **(a)** A page has **4 kB**. The address space has **2²⁰ = 1 048 576 pages**.
+- **(b)** One entry of the page directory addresses **8 MB**, which is **1/512** of the address space. The overhead is one page table of **8 kB**, plus the page directory of 2 kB.
+- **(c)** For the whole address space the overhead is **4098 kB** with two levels and **4096 kB** with one level.
+
+**What we learn.** When a process uses its whole address space, two levels do not save memory. They even cost 2 kB more. But most processes use only a small part of their address space. Then a two-level page table takes memory only for the parts that are used [1, §20.3].
+
+### Notes on this solution
+
+- **Two levels cost time.** The hardware must now look into two tables for one address, not into one [1, §20.3].
+
 ---
 
 ## Summary
@@ -200,6 +289,7 @@ A one-level page table has an entry for every page of the address space, also fo
 | Problem | Main idea | Formula | Result |
 |---|---|---|---|
 | 6 | The page table has one entry for every page, and every entry must be copied | time = number of entries × time for one entry | about 52% of the CPU time |
+| 7 | The address has one part for each table, and tables exist only for the used parts | 2ᵇ things for b bits | (a) 4 kB, 2²⁰ pages; (b) 8 MB, 10 kB; (c) 4098 kB and 4096 kB |
 
 ## References
 
