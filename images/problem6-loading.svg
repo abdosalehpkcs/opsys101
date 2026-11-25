@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 282" role="img" aria-labelledby="p6b-title p6b-desc" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="p6b-title">At every process switch, the page table is copied into the hardware</title>
+  <desc id="p6b-desc">Top: the page table of the next process is copied from memory into the hardware, entry after entry, 100 nanoseconds for one entry. Bottom: a time line. Process A, process B and process C get 100 milliseconds each. Every 100 milliseconds start with loading the page table, and only then the process runs. The picture is not to scale.</desc>
+  <defs>
+    <marker id="p6b-arrow-orange" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#ea580c"/>
+    </marker>
+    <marker id="p6b-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="759" height="281" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="24" y="34" font-size="15" font-weight="700" fill="#0f172a">At every process switch, the page table is copied into the hardware</text>
+
+  <g id="p6b-copy">
+    <rect x="24" y="52" width="236" height="60" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <text x="142" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Memory</text>
+    <text x="142" y="96" text-anchor="middle" font-size="12" fill="#334155">page table of the next process</text>
+
+    <line x1="266" y1="82" x2="494" y2="82" stroke="#ea580c" stroke-width="2" marker-end="url(#p6b-arrow-orange)"/>
+    <text x="380" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">copy, entry after entry</text>
+    <text x="380" y="101" text-anchor="middle" font-size="12" fill="#9a3412">100 ns for one entry</text>
+
+    <rect x="500" y="52" width="236" height="60" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+    <text x="618" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Hardware</text>
+    <text x="618" y="96" text-anchor="middle" font-size="12" fill="#334155">page table of the running process</text>
+  </g>
+
+  <g id="p6b-timeline">
+    <text x="24" y="142" font-size="13" font-weight="700" fill="#334155">What the CPU does</text>
+    <g fill="#fed7aa" stroke="#ea580c">
+      <rect x="24" y="152" width="84" height="44" rx="3"/>
+      <rect x="261" y="152" width="84" height="44" rx="3"/>
+      <rect x="498" y="152" width="84" height="44" rx="3"/>
+    </g>
+    <g fill="#86efac" stroke="#16a34a">
+      <rect x="108" y="152" width="152" height="44" rx="3"/>
+      <rect x="345" y="152" width="152" height="44" rx="3"/>
+      <rect x="582" y="152" width="152" height="44" rx="3"/>
+    </g>
+    <g font-size="11" font-weight="700" text-anchor="middle" fill="#7c2d12">
+      <text x="66" y="178">load table A</text>
+      <text x="303" y="178">load table B</text>
+      <text x="540" y="178">load table C</text>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#14532d">
+      <text x="184" y="178">process A runs</text>
+      <text x="421" y="178">process B runs</text>
+      <text x="658" y="178">process C runs</text>
+    </g>
+    <g fill="none" stroke="#64748b" stroke-width="1.5">
+      <path d="M24 202 V209 H260 V202"/>
+      <path d="M261 202 V209 H497 V202"/>
+      <path d="M498 202 V209 H734 V202"/>
+    </g>
+    <g font-size="12" text-anchor="middle" fill="#334155">
+      <text x="142" y="226">100 ms for process A</text>
+      <text x="379" y="226">100 ms for process B</text>
+      <text x="616" y="226">100 ms for process C</text>
+    </g>
+    <line x1="24" y1="242" x2="734" y2="242" stroke="#64748b" stroke-width="1.5" marker-end="url(#p6b-arrow)"/>
+    <text x="736" y="262" text-anchor="end" font-size="12" fill="#475569">time</text>
+    <text x="24" y="262" font-size="12" fill="#475569">Not to scale: we do not know yet how long the loading takes.</text>
+  </g>
+</svg>

@@ -66,6 +66,44 @@ With **b** bits we can write 2ᵇ different numbers.
 
 ---
 
+## Problem 6 – How Much CPU Time Does Loading the Page Table Take?
+
+*Topic: virtual memory with paging, page table in the hardware.*
+
+### The problem
+
+A computer has a **32-bit** address space and pages of **8 kB**. The page table of the running process is kept in the hardware. Each entry of the table has **32 bits**. When a process starts (or when the CPU switches to it), its page table is copied from memory into the hardware. Copying one entry takes **100 ns**. Every process runs for **100 ms**, and this includes the time for loading the table. What part of the CPU time is used for loading page tables?
+
+### Understand the situation
+
+**1. The page table has one entry for every page.**
+
+The address space of a process is cut into pages. The page table says, for each page, in which frame it is stored. One line of the table is one **entry**.
+
+So an address space with many pages has a long page table.
+
+![The address space of a process with its pages on the left. The page table on the right has one entry for each page, and each entry holds a frame number.](images/problem6-page-table.svg)
+
+**2. At every process switch, the page table must be loaded.**
+
+> **Hint:** The hardware must translate every address that a program uses, so this must be fast. Looking into a table in memory is slow [1, §18.4]. This computer keeps the table of the running process inside the hardware.
+
+Every process has its own page table. When the CPU switches to another process, the OS copies the page table of that process from memory into the hardware. It copies one entry after another, and one entry takes 100 ns. During this time the process cannot run.
+
+![Top: the page table is copied from memory into the hardware, entry after entry, 100 ns each. Bottom: a time line where the 100 ms of every process start with loading its table.](images/problem6-loading.svg)
+
+**3. The question.**
+
+Every process gets 100 ms. The first part of these 100 ms is lost for loading. How large is this part?
+
+Everything follows one chain:
+
+```
+page size  →  number of pages  →  number of entries  →  loading time  →  part of the 100 ms
+```
+
+---
+
 ## References
 
 1. R. H. Arpaci-Dusseau, A. C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*, version 1.10. Arpaci-Dusseau Books. Free online: <https://pages.cs.wisc.edu/~remzi/OSTEP/>. Chapters used: [6 – Mechanism: Limited Direct Execution](https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf), [13 – The Abstraction: Address Spaces](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf), [18 – Paging: Introduction](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf), [19 – Paging: Faster Translations (TLBs)](https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf).
