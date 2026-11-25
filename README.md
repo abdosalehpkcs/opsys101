@@ -102,7 +102,55 @@ Everything follows one chain:
 page size  →  number of pages  →  number of entries  →  loading time  →  part of the 100 ms
 ```
 
+### Solution, step by step
+
+**Step 1 – Split the address.** An address has 32 bits. It is a page number and an offset, as in Problem 5 of Part 1. The offset chooses one byte inside a page, and a page has 8 kB:
+
+```
+8 kB = 8 × 1024 bytes = 8192 bytes = 2¹³ bytes   →   offset = 13 bits
+page number = 32 − 13 = 19 bits
+```
+
+![A 32-bit address drawn as 32 boxes: 19 bits for the page number and 13 bits for the offset.](images/problem6-address.svg)
+
+**Step 2 – Count the pages.** With 19 bits we can write 2¹⁹ different page numbers. There is one entry for every page:
+
+```
+2¹⁹ = 524 288 pages   →   524 288 entries in the page table
+```
+
+**Step 3 – Find the loading time.** Copying one entry takes 100 ns:
+
+```
+524 288 entries × 100 ns = 52 428 800 ns ≈ 52.43 ms       (1 ms = 1 000 000 ns)
+```
+
+**Step 4 – Find the part of the CPU time.** Every process has 100 ms, and 52.43 ms of them are used for loading:
+
+```
+52.43 ms ÷ 100 ms ≈ 0.524  ≈  52 %
+```
+
+![The 100 ms of one process, to scale. For 52.43 ms the CPU loads the page table. For 47.57 ms the process runs.](images/problem6-time.svg)
+
+### Answer
+
+Loading page tables uses about **52%** of the CPU time. For more than half of the time the CPU only copies tables.
+
+**What we learn.** The page table of a large address space is very long. Copying the whole table at every process switch is far too expensive. Real systems leave the page table in memory and keep only a few entries in fast hardware [1, ch. 19]. This is the associative memory of Problem 9.
+
+### Notes on this solution
+
+- **What are the 32 bits of an entry for?** We do not need them for the time, because the problem gives the time for one entry. They tell us the size of the table: 524 288 entries × 4 bytes = 2 097 152 bytes = 2 MB for every process.
+- **Bytes, not words.** In Problem 5 the addresses counted words. Here the page size is given in kB, so one address points to one byte.
+
 ---
+
+## Summary
+
+| Problem | Main idea | Formula | Result |
+|---|---|---|---|
+| 6 | The page table has one entry for every page, and every entry must be copied | time = number of entries × time for one entry | about 52% of the CPU time |
 
 ## References
 
