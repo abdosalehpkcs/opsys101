@@ -233,7 +233,11 @@ The whole address space has 2³² bytes = 4 GB = 4096 MB. So one entry covers:
 
 ![One entry of the page directory points to one page table with 2048 entries, which covers 2048 pages, or 8 MB. The address space of 4 GB has 512 such parts.](images/problem7-one-entry.svg)
 
-**Step 2 – Find the overhead.** To use these 8 MB, two tables must be in memory. Every entry holds an address, and an address has 32 bits. So one entry takes 4 bytes:
+**Step 2 – Find the overhead: how much memory do the tables take?**
+
+> **Hint:** *Overhead* is an extra cost that a system pays for its own work, not for the useful work. Here the useful part is the 8 MB that the program can use. The overhead is the memory that the tables themselves take [1, ch. 20]. A book works in the same way: the table of contents is not the story, but we need it to find a chapter.
+
+To use these 8 MB, two tables must be in memory: one page table and the page directory. Every entry holds an address, and an address has 32 bits. So one entry takes 4 bytes:
 
 ```
 one page table:       2048 entries × 4 bytes = 8192 bytes = 8 kB
